@@ -1,2 +1,2 @@
-# Algorimos Preciosos
+# Algoritmos Preciosos
 Joyeria
