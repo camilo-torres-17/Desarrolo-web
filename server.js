@@ -17,5 +17,5 @@ app.listen(PORT, () =>{
 });
 
 app.get('/anillos', (req, res) => {
-   res.sendFile(__dirname + '/views/anillos.html');
+   res.sendFile(__dirname + '/public/views/anillos.html');
 });
