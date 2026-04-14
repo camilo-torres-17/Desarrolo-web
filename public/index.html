@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+     <header>
+        <div class="cabecera">
+            <img class="imgcabecera" src="/images/logo.png" alt="Algoritmos Preciosos">
+            <div class="titulo">
+                <h1>ALGORITMOS PRECIOSOS</h1>
+                <p>Diseño con Diamantes. Lógica con Lujo</p>
+                </div>
+                </div>
+            <div class="w-header">
+                <form class="xyz">
+                    <input type="text" placeholder="Buscar....">
+                    <button><i class="fa fa-search" aria-hidden="true"></i></button>
+                </form>
+            </div>
+
+            <nav class="menu">
+                <ul>
+                    <li><a href="#">Anillos</a></li>
+                    <li><a href="#">Cadenas</a></li>
+                    <li><a href="#">Dijes</a></li>
+                    <li><a href="#">Aretes</a></li>
+                    <li><a href="#">Pulseras</a></li>
+                    <li><a href="#">Esmeraldas</a></li>
+                </ul>
+        </div>
+        </div>
+    </header>
+
+    <main>
+        <section>
+            <h3>Lo mas vendido</h3>
+            <div class="vista" >
+                <article class="tarjeta" onclick="verDetalle('Anillo Umbral','930.000',
+                'Diseño escultórico inspirado en las ondas de la naturaleza. Minimalismo puro en cada curva.',
+                '/images/anilloumbral.png','10%')">
+                    <img src="/images/anilloumbral.png" class="producto-img" alt="">
+                    <div class="caja">
+                        <div class="flex">
+                            <p>Anillo Umbral</p>
+                            </div>
+                        <div>
+                            <p>$930.000</p>
+                        </div>  
+                    </div>
+                </article>
+
+                <article class="tarjeta" onclick="verDetalle('Cadena Plana','1.200.000',
+                'Una pieza esencial que combina tres tonos de oro en un diseño de eslabón plano. Versatilidad y brillo sutil para elevar cualquier look diario.',
+                '/images/cadenaplana.png','No tiene descuento')">
+                    <img src="/images/cadenaplana.png" class="producto-img" alt="">
+                    <div class="caja">
+                        <div class="flex">
+                            <p>Cadena Plana</p>
+                            </div>
+                        <div>
+                            <p>$1.200.000</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="tarjeta" onclick="verDetalle('Anillo Hombre','1.800.000',
+                'Fuerza y espiritualidad en una sola pieza. Diseño robusto en oro con detalles grabados a precisión, ideal para el hombre que busca un accesorio con significado.',
+                '/images/anillohombre.png','No tiene descuento')">
+                    <img src="/images/anillohombre.png" class="producto-img" alt="">
+                    <div class="caja">
+                        <div class="flex">
+                            <p>Anillo Hombre</p>
+                          </div>
+                        <div>
+                            <p>$1.800.000</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="tarjeta" onclick="verDetalle('Pulsera Silente','1.300.000',
+                'Estructura circular con textura de malla fina. Perfecta para usar sola o crear un conjunto de brazaletes. Un básico atemporal con un toque contemporáneo.',
+                '/images/pulserasilente.png','10%')">
+                    <img src="/images/pulserasilente.png" class="producto-img" alt="">
+                    <div class="caja">
+                        <div class="flex">
+                            <p>Pulsera Silente</p>
+                        </div>
+                        <div>
+                            <p>$1.300.000</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="tarjeta" onclick="verDetalle('Dije Esmeralda','1.400.000',
+                'Diseño geométrico con esmeralda de corte rectangular. Elegancia sutil y moderna, ideal para quienes buscan una pieza distintiva y delicada.',
+                '/images/dijeesmeralda.png','5%')">
+                    <img src="/images/dijeesmeralda.png" class="producto-img" alt="">
+                    <div class="caja">
+                        <div class="flex">
+                            <p>Dije Esmeralda</p>
+                           </div>
+                        <div>
+                            <p>$1.400.000</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="tarjeta" onclick="verDetalle('Pulsera Italiana','1.600.000',
+                'La elegancia de la joyería italiana en tu muñeca. Un tejido de eslabones cuadrados que ofrece un brillo uniforme y una resistencia excepcional. Un básico imprescindible.',
+                '/images/pulseraitaliana.png','No tiene descuento')">
+                    <img src="/images/pulseraitaliana.png" class="producto-img" alt="">
+                    <div class="caja">
+                        <div class="flex">
+                            <p>Pulsera Italiana</p>
+                        </div>
+                        <div>
+                            <p>$1.600.000</p>
+                        </div>
+                    </div>
+                </article>    
+            </div>    
+        </section>
+
+        <section>
+            <h3>Coleccion Destacada</h3>
+             <div class="vista">
+                <article class="tarjeta">
+                    <img src="/images/esmeraldas.png" class="producto-img" alt="">
+                    <div class="caja">
+                        <div class="flex">
+                            <p>Esmeraldas</p>
+                        </div>
+                    </div>    
+                </article> 
+
+                <article class="tarjeta">
+                    <img src="/images/lineahombre.png" class="producto-img" alt="">
+                    <div class="caja">
+                        <div class="flex">
+                            <p>Linea Hombre</p>
+                        </div>
+                    </div>    
+                </article> 
+
+                <article class="tarjeta">
+                    <img src="/images/Lineamujer.png" class="producto-img" alt="">
+                    <div class="caja">
+                        <div class="flex">
+                            <p>Linea Mujer</p>
+                        </div>
+                    </div>    
+                </article> 
+            </div>            
+         </section>
+    </main>
+
+    <div id="detalle-producto"></div>
+
+    <footer>
+        <section>
+            <div>
+                <h2>Contactanos</h2>
+                <h4>info@algoritmospreciosos.com</h4>
+                <h4>3123164110</h4>
+                <h4>Cl. 12 #8-2 a 8-84</h4>
+                <h4>Sangil, Santander, Colombia</h4>
+            </div>
+            <div>
+                <h2>Informacion</h2>
+                <h4>Preguntas frecuentes</h4>
+                <h4>Politica de envios</h4>
+                <h4>Cambios y devoluciones</h4>
+                <h4>Politica de garantia</h4>
+            </div>
+            <div>
+                 <h2>Suscribete</h2>
+                <h4>¡Unete a nuestra comunidad!</h4>
+            </div>
+        </section>
+    </footer>
+
+<script>
+
+function verDetalle(nombre, precio, descripcion, imagen, descuento){
+
+document.getElementById("detalle-producto").innerHTML = `
+<div class="modal">
+
+<div class="detalle-card">
+
+<button class="cerrar" onclick="cerrarDetalle()">X</button>
+
+<h2>${nombre}</h2>
+
+<img src="${imagen}" class="detalle-img">
+
+<p><strong>Precio:</strong> $${precio}</p>
+
+<p><strong>Descripción:</strong> ${descripcion}</p>
+
+<p><strong>Descuento:</strong> ${descuento}</p>
+
+</div>
+
+</div>
+`;
+
+}
+
+function cerrarDetalle(){
+document.getElementById("detalle-producto").innerHTML="";
+}
+
+</script>
+        
+</body>

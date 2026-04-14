@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <script>
+
+function verDetalle(nombre, precio, descripcion, imagen, descuento){
+
+document.getElementById("detalle-producto").innerHTML = `
+<div class="modal">
+
+<div class="detalle-card">
+
+<button class="cerrar" onclick="cerrarDetalle()">X</button>
+
+<h2>${nombre}</h2>
+
+<img src="${imagen}" class="detalle-img">
+
+<p><strong>Precio:</strong> $${precio}</p>
+
+<p><strong>Descripción:</strong> ${descripcion}</p>
+
+<p><strong>Descuento:</strong> ${descuento}</p>
+
+</div>
+
+</div>
+`;
+
+}
+
+function cerrarDetalle(){
+document.getElementById("detalle-producto").innerHTML="";
+}
+
+</script>
+        
+</body>
