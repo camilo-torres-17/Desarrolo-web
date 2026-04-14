@@ -19,3 +19,31 @@ app.listen(PORT, () =>{
 app.get('/anillos', (req, res) => {
    res.sendFile(__dirname + '/public/views/anillos.html');
 });
+
+app.get('/cadenas', (req, res) => {
+   res.sendFile(__dirname + '/public/views/cadenas.html');
+});
+
+app.get('/dijes', (req, res) => {
+   res.sendFile(__dirname + '/public/views/dijes.html');
+});
+
+app.get('/aretes', (req, res) => {
+   res.sendFile(__dirname + '/public/views/aretes.html');
+});
+
+app.get('/pulseras', (req, res) => {
+   res.sendFile(__dirname + '/public/views/pulseras.html');
+});
+
+app.get('/esmeraldas', (req, res) => {
+   res.sendFile(__dirname + '/public/views/esmeraldas.html');
+});
+
+app.get('/', (req, res) => {
+   res.sendFile(__dirname + '/public/views/.html');
+});
+
+app.get('/carrito', (req, res) => {
+    res.sendFile(__dirname + '/public/views/carrito.html');
+});

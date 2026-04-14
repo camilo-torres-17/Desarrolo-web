@@ -1,5 +1,3 @@
-<link rel="stylesheet" href="/css/style.css">
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,12 +17,13 @@
                 <h1>ALGORITMOS PRECIOSOS</h1>
                 <p>Diseño con Diamantes. Lógica con Lujo</p>
                 </div>
-                <div class="carrito-header">
-                  <a href="/carrito">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span>Carrito</span>
-                    </a>
-                    </div>
+                  <div class="carrito-header">
+    <a href="/carrito">
+        <i class="fas fa-shopping-cart"></i>
+        <span>Carrito</span>
+        <span id="contador-carrito">0</span>
+    </a>
+</div>
                 </div>
             <div class="w-header">
                 <form class="xyz">
@@ -47,32 +46,39 @@
         </div>
     </header>
 
+    
+<h2 class="titulo-carrito">🛒 Carrito de Compras</h2>
 
+<div id="lista-carrito" class="carrito-container"></div>
 
-<main>
-    <section>
-        <h3>Anillos</h3>
-        <div class="vista">
-            <article class="tarjeta">
-                    <img src="/images/anilloumbral.png" class="producto-img" alt="">
-                    <div class="caja">
-                        <div class="flex">
-                            <p>Anillo Umbral</p>
-                            </div>
-                        <div>
-                            <p>$930.000</p>
-                        </div> 
-                     </div>
-                       <button class="btn-carrito" 
-                        onclick="agregarCarrito('Anillo Umbral','930000','/images/anilloumbral.png')">
-                        <i class="fas fa-cart-plus"></i> Agregar
-                        </button>
+<h3 id="total-carrito"></h3>
 
-                            <button class="btn-comprar" onclick="comprar('Anillo Umbral')">
-                            <i class="fas fa-credit-card"></i> Comprar
-                            </button>
-                    </div>
-            </article>
+<script>
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+let contenedor = document.getElementById("lista-carrito");
+let total = 0;
+
+carrito.forEach((producto, index) => {
+    total += parseInt(producto.precio);
+
+    contenedor.innerHTML += `
+        <div class="item-carrito">
+            <img src="${producto.imagen}">
+            <div>
+                <p>${producto.nombre}</p>
+                <p>$${producto.precio}</p>
+            </div>
+            <button onclick="eliminar(${index})">❌</button>
         </div>
-    </section>
-</main>
+    `;
+});
+
+document.getElementById("total-carrito").innerText = "Total: $" + total;
+
+function eliminar(index){
+    carrito.splice(index,1);
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+    location.reload();
+}
+</script>

@@ -17,6 +17,12 @@
                 <h1>ALGORITMOS PRECIOSOS</h1>
                 <p>Diseño con Diamantes. Lógica con Lujo</p>
                 </div>
+                  <div class="carrito-header">
+                  <a href="/carrito">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Carrito</span>
+                    </a>
+                    </div>
                 </div>
             <div class="w-header">
                 <form class="xyz">
@@ -28,11 +34,11 @@
             <nav class="menu">
                 <ul>
                     <li><a href="/anillos">Anillos</a></li>
-                    <li><a href="#">Cadenas</a></li>
-                    <li><a href="#">Dijes</a></li>
-                    <li><a href="#">Aretes</a></li>
-                    <li><a href="#">Pulseras</a></li>
-                    <li><a href="#">Esmeraldas</a></li>
+                    <li><a href="/cadenas">Cadenas</a></li>
+                    <li><a href="/dijes">Dijes</a></li>
+                    <li><a href="/aretes">Aretes</a></li>
+                    <li><a href="/pulseras">Pulseras</a></li>
+                    <li><a href="/esmeraldas">Esmeraldas</a></li>
                 </ul>
         </div>
         </div>
@@ -185,39 +191,5 @@
             </div>
         </section>
     </footer>
-
-<script>
-
-function verDetalle(nombre, precio, descripcion, imagen, descuento){
-
-document.getElementById("detalle-producto").innerHTML = `
-<div class="modal">
-
-<div class="detalle-card">
-
-<button class="cerrar" onclick="cerrarDetalle()">X</button>
-
-<h2>${nombre}</h2>
-
-<img src="${imagen}" class="detalle-img">
-
-<p><strong>Precio:</strong> $${precio}</p>
-
-<p><strong>Descripción:</strong> ${descripcion}</p>
-
-<p><strong>Descuento:</strong> ${descuento}</p>
-
-</div>
-
-</div>
-`;
-
-}
-
-function cerrarDetalle(){
-document.getElementById("detalle-producto").innerHTML="";
-}
-
-</script>
-        
+        <script src="/js/product-detail.js"></script>
 </body>
