@@ -15,3 +15,7 @@ app.get('/', (req, res)=>{
 app.listen(PORT, () =>{
     console.log('ejecutando en el puerto 3000');
 });
+
+app.get('/anillos', (req, res) => {
+   res.sendFile(__dirname + '/views/anillos.html');
+});
