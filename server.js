@@ -44,6 +44,14 @@ app.get('/', (req, res) => {
    res.sendFile(__dirname + '/public/views/.html');
 });
 
+app.get('/lineahombre', (req, res) => {
+   res.sendFile(__dirname + '/public/views/lineahombre.html');
+});
+
+app.get('/lineamujer', (req, res) => {
+   res.sendFile(__dirname + '/public/views/lineamujer.html');
+});
+
 app.get('/carrito', (req, res) => {
     res.sendFile(__dirname + '/public/views/carrito.html');
 });

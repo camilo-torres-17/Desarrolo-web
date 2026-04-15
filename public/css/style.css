@@ -385,3 +385,8 @@ color:white;
 background:#2e9e3d;
 transform:scale(1.05);
 }
+
+a{
+text-decoration:none;
+color:inherit;
+}
