@@ -1,11 +1,133 @@
-<h2>ADMIN PRODUCTOS</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+   <header>
+        <div class="cabecera">
+            <img class="imgcabecera" src="/images/inicio/logo.png" alt="Algoritmos Preciosos">
+            <div class="titulo">
+                <h1>ALGORITMOS PRECIOSOS</h1>
+                <p>Diseño con Diamantes. Lógica con Lujo</p>
+                </div>
+            
+    </header>
+        </div>
 
-<input id="nombre" placeholder="Nombre">
-<input id="precio" placeholder="Precio">
-<input id="imagen" placeholder="Imagen">
+ <div class="admin-container">
 
-<button onclick="crearProducto()">Agregar</button>
+<button class="btn-logout" onclick="logout()">Cerrar sesión</button>
 
-<div id="lista"></div>
+<h2 class="admin-titulo">⚙️ Panel Administrador</h2>
 
+<!-- FORM -->
+<div class="admin-form">
+    <input id="nombre" placeholder="Nombre" class="input-admin">
+    <input id="precio" placeholder="Precio" class="input-admin">
+    <input id="imagen" placeholder="Ruta imagen" class="input-admin">
+    <input id="categoria" placeholder="Categoria" class="input-admin">
+    <input id="descripcion" placeholder="Descripción" class="input-admin">
+
+    <button class="btn-guardar" onclick="crearProducto()">Guardar Producto</button>
+</div>
+
+<!-- LISTA -->
+<div id="lista-admin" class="admin-lista"></div>
+
+</div>
+
+<script>
+
+const API = "/api/productos";
+
+// 🔹 CARGAR
+function cargarAdmin(){
+    fetch(API)
+    .then(res => res.json())
+    .then(data => {
+
+        let contenedor = document.getElementById("lista-admin");
+        contenedor.innerHTML = "";
+
+        data.forEach(p => {
+            contenedor.innerHTML += `
+                <div style="background:white;padding:10px;margin:10px;border-radius:8px;">
+                    <b>${p.nombre}</b> - $${p.precio} (${p.categoria})
+
+                    <button onclick="eliminar(${p.id})">❌</button>
+                    <button onclick="editar(${p.id})">✏️</button>
+                </div>
+            `;
+        });
+    });
+}
+
+// 🔹 CREAR
+function crearProducto(){
+
+    let producto = {
+        nombre: document.getElementById("nombre").value,
+        precio: document.getElementById("precio").value,
+        imagen: document.getElementById("imagen").value,
+        categoria: document.getElementById("categoria").value,
+        descripcion: document.getElementById("descripcion").value
+    };
+
+    fetch(API,{
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body: JSON.stringify(producto)
+    })
+    .then(()=> {
+        alert("Producto creado");
+        cargarAdmin();
+    });
+}
+
+// 🔹 ELIMINAR
+function eliminar(id){
+    fetch(API + "/" + id,{
+        method:"DELETE"
+    })
+    .then(()=>{
+        cargarAdmin();
+    });
+}
+
+// 🔹 EDITAR
+function editar(id){
+
+    let nuevoNombre = prompt("Nuevo nombre");
+    let nuevoPrecio = prompt("Nuevo precio");
+
+    fetch(API + "/" + id,{
+        method:"PUT",
+        headers:{"Content-Type":"application/json"},
+        body: JSON.stringify({
+            nombre: nuevoNombre,
+            precio: nuevoPrecio
+        })
+    })
+    .then(()=>{
+        cargarAdmin();
+    });
+}
+
+function logout(){
+    localStorage.removeItem("admin");
+    window.location.href = "/";
+}
+
+cargarAdmin();
+
+</script>
 <script src="/js/admin.js"></script>
+</body>
+</html>

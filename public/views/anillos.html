@@ -47,73 +47,48 @@
         </div>
     </header>
 
-
-
- <main>
+<main>
     <section>
         <h3>Anillos</h3>
-        <div class="vista">
-            <article class="tarjeta">
-                    <img src="/images/inicio/anilloumbral.png" class="producto-img" alt="">
-                    <div class="caja">
-                        <div class="flex">
-                            <p>Anillo Umbral</p>
-                            </div>
-                        <div>
-                            <p>$930.000</p>
-                        </div> 
-                     </div>
-                       <button class="btn-carrito" 
-                        onclick="agregarCarrito('Anillo Umbral','930000','/images/anilloumbral.png')">
-                        <i class="fas fa-cart-plus"></i> Agregar
-                        </button>
 
-                            <button class="btn-comprar" onclick="comprar('Anillo Umbral')">
-                            <i class="fas fa-credit-card"></i> Comprar
-                            </button>
-            </article>
-
-            <article class="tarjeta">
-                    <img src="/images/anillos/anillo1.png" class="producto-img" alt="">
-                    <div class="caja">
-                        <div class="flex">
-                            <p>Anillo Circon Cruz</p>
-                            </div>
-                        <div>
-                            <p>$1.340.000</p>
-                        </div> 
-                     </div>
-                       <button class="btn-carrito" 
-                        onclick="agregarCarrito('Anillo Umbral','930000','/images/anilloumbral.png')">
-                        <i class="fas fa-cart-plus"></i> Agregar
-                        </button>
-
-                            <button class="btn-comprar" onclick="comprar('Anillo Umbral')">
-                            <i class="fas fa-credit-card"></i> Comprar
-                            </button>
-            </article>
-
-            <article class="tarjeta">
-                    <img src="/images/anillos/anillo2.png" class="producto-img" alt="">
-                    <div class="caja">
-                        <div class="flex">
-                            <p>Anillo Denario</p>
-                            </div>
-                        <div>
-                            <p>$999.999</p>
-                        </div> 
-                     </div>
-                       <button class="btn-carrito" 
-                        onclick="agregarCarrito('Anillo Umbral','930000','/images/anilloumbral.png')">
-                        <i class="fas fa-cart-plus"></i> Agregar
-                        </button>
-
-                            <button class="btn-comprar" onclick="comprar('Anillo Umbral')">
-                            <i class="fas fa-credit-card"></i> Comprar
-                            </button>
-            </article>
-
-        </div>
+        <div class="vista" id="contenedor-productos"></div>
     </section>
 </main>
+
+<!-- MODAL -->
+<div id="detalle-producto"></div>
+
+<!-- SCRIPTS -->
+<script src="/js/product-detail.js"></script>
+<script src="/js/carrito.js"></script>
+<script src="/js/productos.js"></script>
+
+<script>
+    cargarProductos("anillos"); // SOLO ANILLOS
+</script>
+
 </body>
+
+<footer>
+        <section>
+            <div>
+                <h2>Contactanos</h2>
+                <h4>info@algoritmospreciosos.com</h4>
+                <h4>3123164110</h4>
+                <h4>Cl. 12 #8-2 a 8-84</h4>
+                <h4>Sangil, Santander, Colombia</h4>
+            </div>
+            <div>
+                <h2>Informacion</h2>
+                <h4>Preguntas frecuentes</h4>
+                <h4>Politica de envios</h4>
+                <h4>Cambios y devoluciones</h4>
+                <h4>Politica de garantia</h4>
+            </div>
+            <div>
+                 <h2>Suscribete</h2>
+                <h4>¡Unete a nuestra comunidad!</h4>
+            </div>
+        </section>
+    </footer>
+</html>

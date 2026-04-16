@@ -3,230 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- fuentes -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+    <!-- estilos -->
     <link rel="stylesheet" href="/css/style.css">
+
+    <!-- iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
+
 <body>
-     <header>
-        <div class="cabecera">
-            <img class="imgcabecera" src="/images/inicio/logo.png" alt="Algoritmos Preciosos">
-            <div class="titulo">
-                <h1>ALGORITMOS PRECIOSOS</h1>
-                <p>Diseño con Diamantes. Lógica con Lujo</p>
-                </div>
-                  <div class="carrito-header">
-                  <a href="/carrito">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span>Carrito</span>
-                    </a>
-                    </div>
-                </div>
-            <div class="w-header">
-                <form class="xyz">
-                    <input type="text" placeholder="Buscar....">
-                    <button><i class="fa fa-search" aria-hidden="true"></i></button>
-                </form>
-            </div>
 
-            <nav class="menu">
-                <ul>
-                    <li><a href="/anillos">Anillos</a></li>
-                    <li><a href="/cadenas">Cadenas</a></li>
-                    <li><a href="/dijes">Dijes</a></li>
-                    <li><a href="/aretes">Aretes</a></li>
-                    <li><a href="/pulseras">Pulseras</a></li>
-                    <li><a href="/esmeraldas">Esmeraldas</a></li>
-                </ul>
+<header>
+    <div class="cabecera">
+        <img class="imgcabecera" src="/images/inicio/logo.png" alt="Algoritmos Preciosos">
+
+        <div class="titulo">
+            <h1>ALGORITMOS PRECIOSOS</h1>
+            <p>Diseño con Diamantes. Lógica con Lujo</p>
         </div>
+
+        <div class="carrito-header">
+            <a href="/carrito">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Carrito</span>
+                <span id="contador-carrito">0</span>
+            </a>
         </div>
-    </header>
+    </div>
 
-    <main>
-        <section>
-            <h3>Lo mas vendido</h3>
-            <div class="vista" >
-                <article class="tarjeta" onclick="verDetalle('Anillo Umbral','930.000',
-                'Diseño escultórico inspirado en las ondas de la naturaleza. Minimalismo puro en cada curva.',
-                '/images/inicio/anilloumbral.png','10%')">
-                    <img src="/images/inicio/anilloumbral.png" class="producto-img" alt="">
-                    <div class="caja">
-                        <div class="flex">
-                            <p>Anillo Umbral</p>
-                            </div>
-                        <div>
-                            <p>$930.000</p>
-                        </div> 
-                          <div class="botones-producto"></div>
-                            <button class="btn-carrito"
-                        onclick="event.stopPropagation(); agregarCarrito('Anillo Umbral','930000','/images/inicio/anilloumbral.png')">
-                        <i class="fas fa-cart-plus"></i> Agregar
-                         </button> 
-                    </div>
-                </article>
+    <div class="w-header">
+        <form class="xyz">
+            <input type="text" placeholder="Buscar....">
+            <button><i class="fa fa-search"></i></button>
+        </form>
+    </div>
 
-                <article class="tarjeta" onclick="verDetalle('Cadena Plana','1.200.000',
-                'Una pieza esencial que combina tres tonos de oro en un diseño de eslabón plano. Versatilidad y brillo sutil para elevar cualquier look diario.',
-                '/images/inicio/cadenaplana.png','No tiene descuento')">
-                    <img src="/images/inicio/cadenaplana.png" class="producto-img" alt="">
-                    <div class="caja">
-                        <div class="flex">
-                            <p>Cadena Plana</p>
-                            </div>
-                        <div>
-                            <p>$1.200.000</p>
-                        </div>
-                        <div class="botones-producto"></div>
-                            <button class="btn-carrito"
-                        onclick="event.stopPropagation(); agregarCarrito('Anillo Umbral','930000','/images/inicio/anilloumbral.png')">
-                        <i class="fas fa-cart-plus"></i> Agregar
-                         </button> 
-                    </div>
-                </article>
+    <nav class="menu">
+        <ul>
+            <li><a href="/anillos">Anillos</a></li>
+            <li><a href="/cadenas">Cadenas</a></li>
+            <li><a href="/dijes">Dijes</a></li>
+            <li><a href="/aretes">Aretes</a></li>
+            <li><a href="/pulseras">Pulseras</a></li>
+            <li><a href="/esmeraldas">Esmeraldas</a></li>
+        </ul>
+    </nav>
+</header>
 
-                <article class="tarjeta" onclick="verDetalle('Anillo Hombre','1.800.000',
-                'Fuerza y espiritualidad en una sola pieza. Diseño robusto en oro con detalles grabados a precisión, ideal para el hombre que busca un accesorio con significado.',
-                '/images/inicio/anillohombre.png','No tiene descuento')">
-                    <img src="/images/inicio/anillohombre.png" class="producto-img" alt="">
-                    <div class="caja">
-                        <div class="flex">
-                            <p>Anillo Hombre</p>
-                          </div>
-                        <div>
-                            <p>$1.800.000</p>
-                        </div>
-                        <div class="botones-producto"></div>
-                            <button class="btn-carrito"
-                        onclick="event.stopPropagation(); agregarCarrito('Anillo Umbral','930000','/images/inicio/anilloumbral.png')">
-                        <i class="fas fa-cart-plus"></i> Agregar
-                         </button>
-                    </div>
-                </article>
+<main>
 
-                <article class="tarjeta" onclick="verDetalle('Pulsera Silente','1.300.000',
-                'Estructura circular con textura de malla fina. Perfecta para usar sola o crear un conjunto de brazaletes. Un básico atemporal con un toque contemporáneo.',
-                '/images/inicio/pulserasilente.png','10%')">
-                    <img src="/images/inicio/pulserasilente.png" class="producto-img" alt="">
-                    <div class="caja">
-                        <div class="flex">
-                            <p>Pulsera Silente</p>
-                        </div>
-                        <div>
-                            <p>$1.300.000</p>
-                        </div>
-                        <div class="botones-producto"></div>
-                            <button class="btn-carrito"
-                        onclick="event.stopPropagation(); agregarCarrito('Anillo Umbral','930000','/images/inicio/anilloumbral.png')">
-                        <i class="fas fa-cart-plus"></i> Agregar
-                         </button>
-                    </div>
-                </article>
+    <!-- PRODUCTOS DINÁMICOS -->
+    <section>
+        <h3>Lo más vendido</h3>
 
-                <article class="tarjeta" onclick="verDetalle('Dije Esmeralda','900.000',
-                'Diseño geométrico con esmeralda de corte rectangular. Elegancia sutil y moderna, ideal para quienes buscan una pieza distintiva y delicada.',
-                '/images/inicio/dijeesmeralda.png','5%')">
-                    <img src="/images/inicio/dijeesmeralda.png" class="producto-img" alt="">
-                    <div class="caja">
-                        <div class="flex">
-                            <p>Dije Esmeralda</p>
-                           </div>
-                        <div>
-                            <p>900.000</p>
-                        </div>
-                        <div class="botones-producto"></div>
-                            <button class="btn-carrito"
-                        onclick="event.stopPropagation(); agregarCarrito('Anillo Umbral','930000','/images/inicio/anilloumbral.png')">
-                        <i class="fas fa-cart-plus"></i> Agregar
-                         </button>
-                    </div>
-                </article>
+        <!-- AQUÍ SE CARGAN DESDE JSON -->
+        <div class="vista" id="contenedor-productos"></div>
+    </section>
 
-                <article class="tarjeta" onclick="verDetalle('Pulsera Italiana','1.600.000',
-                'La elegancia de la joyería italiana en tu muñeca. Un tejido de eslabones cuadrados que ofrece un brillo uniforme y una resistencia excepcional. Un básico imprescindible.',
-                '/images/inicio/pulseraitaliana.png','No tiene descuento')">
-                    <img src="/images/inicio/pulseraitaliana.png" class="producto-img" alt="">
-                    <div class="caja">
-                        <div class="flex">
-                            <p>Pulsera Italiana</p>
-                        </div>
-                        <div>
-                            <p>$1.600.000</p>
-                        </div>
-                        <div class="botones-producto"></div>
-                            <button class="btn-carrito"
-                        onclick="event.stopPropagation(); agregarCarrito('Anillo Umbral','930000','/images/inicio/anilloumbral.png')">
-                        <i class="fas fa-cart-plus"></i> Agregar
-                         </button>
-                    </div>
-                </article>    
-            </div>    
-        </section>
+    <!-- COLECCIONES -->
+    <section>
+        <h3>Colección Destacada</h3>
 
-        <section>
-            <h3>Coleccion Destacada</h3>
-             <div class="vista">
-                <a href="/esmeraldas">
+        <div class="vista">
+
+            <a href="/esmeraldas">
                 <article class="tarjeta">
-                    <img src="/images/inicio/esmeraldas.png" class="producto-img" alt="">
+                    <img src="/images/inicio/esmeraldas.png" class="producto-img">
                     <div class="caja">
-                        <div class="flex">
-                            <p>Esmeraldas</p>
-                        </div>
-                    </div>    
+                        <p>Esmeraldas</p>
+                    </div>
                 </article>
-                </a>
+            </a>
 
-                <a href="/lineahombre">
+            <a href="/lineahombre">
                 <article class="tarjeta">
-                    <img src="/images/inicio/lineahombre.png" class="producto-img" alt="">
+                    <img src="/images/inicio/lineahombre.png" class="producto-img">
                     <div class="caja">
-                        <div class="flex">
-                            <p>Linea Hombre</p>
-                        </div>
-                    </div>    
-                </article> 
-                </a>
-
-                <a href="/lineamujer">
-                <article class="tarjeta">
-                    <img src="/images/inicio/Lineamujer.png" class="producto-img" alt="">
-                    <div class="caja">
-                        <div class="flex">
-                            <p>Linea Mujer</p>
-                        </div>
-                    </div>    
+                        <p>Linea Hombre</p>
+                    </div>
                 </article>
-                </a> 
-            </div>            
-         </section>
-    </main>
+            </a>
 
-    <div id="detalle-producto"></div>
+            <a href="/lineamujer">
+                <article class="tarjeta">
+                    <img src="/images/inicio/Lineamujer.png" class="producto-img">
+                    <div class="caja">
+                        <p>Linea Mujer</p>
+                    </div>
+                </article>
+            </a>
 
-    <footer>
-        <section>
-            <div>
-                <h2>Contactanos</h2>
-                <h4>info@algoritmospreciosos.com</h4>
-                <h4>3123164110</h4>
-                <h4>Cl. 12 #8-2 a 8-84</h4>
-                <h4>Sangil, Santander, Colombia</h4>
-            </div>
-            <div>
-                <h2>Informacion</h2>
-                <h4>Preguntas frecuentes</h4>
-                <h4>Politica de envios</h4>
-                <h4>Cambios y devoluciones</h4>
-                <h4>Politica de garantia</h4>
-            </div>
-            <div>
-                 <h2>Suscribete</h2>
-                <h4>¡Unete a nuestra comunidad!</h4>
-            </div>
-        </section>
-    </footer>
-        <script src="/js/product-detail.js"></script>
-        <script src="/js/carrito.js"></script>
+        </div>
+    </section>
+
+</main>
+
+<!-- MODAL DETALLE -->
+<div id="detalle-producto"></div>
+
+<footer>
+    <section>
+        <div>
+            <h2>Contactanos</h2>
+            <h4>info@algoritmospreciosos.com</h4>
+            <h4>3123164110</h4>
+            <h4>Cl. 12 #8-2 a 8-84</h4>
+            <h4>Sangil, Santander, Colombia</h4>
+        </div>
+
+        <div>
+            <h2>Información</h2>
+            <h4>Preguntas frecuentes</h4>
+            <h4>Política de envíos</h4>
+            <h4>Cambios y devoluciones</h4>
+            <h4>Política de garantía</h4>
+        </div>
+
+        <div>
+            <h2>Suscríbete</h2>
+            <h4>¡Únete a nuestra comunidad!</h4>
+        </div>
+
+        <a href="/login">Admin</a>
+    </section>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/js/product-detail.js"></script>
+<script src="/js/carrito.js"></script>
+<script src="/js/productos.js"></script>
+
+<script>
+    cargarProductos(); // 🔥 carga desde JSON
+</script>
+
 </body>
+</html>

@@ -390,3 +390,125 @@ a{
 text-decoration:none;
 color:inherit;
 }
+
+/* ===== ADMIN ===== */
+
+.admin-container{
+max-width:1000px;
+margin:30px auto;
+padding:20px;
+}
+
+.admin-titulo{
+text-align:center;
+font-size:28px;
+margin-bottom:20px;
+}
+
+/* formulario */
+.admin-form{
+background:white;
+padding:20px;
+border-radius:12px;
+box-shadow:0 4px 15px rgba(0,0,0,0.1);
+display:grid;
+gap:10px;
+}
+
+.input-admin{
+padding:10px;
+border-radius:8px;
+border:1px solid #ccc;
+outline:none;
+}
+
+.input-admin:focus{
+border:1px solid #4dc1f2;
+}
+
+/* botón guardar */
+.btn-guardar{
+background:#4dc1f2;
+color:white;
+border:none;
+padding:10px;
+border-radius:8px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.btn-guardar:hover{
+background:#2fa4d6;
+}
+
+/* lista productos */
+.admin-lista{
+margin-top:30px;
+display:grid;
+gap:15px;
+}
+
+/* tarjeta admin */
+.admin-card{
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:white;
+padding:15px;
+border-radius:10px;
+box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+
+.admin-info{
+display:flex;
+align-items:center;
+gap:15px;
+}
+
+.admin-info img{
+width:60px;
+border-radius:8px;
+}
+
+.admin-nombre{
+font-weight:bold;
+}
+
+.admin-precio{
+color:#4dc1f2;
+}
+
+/* botones */
+.admin-botones{
+display:flex;
+gap:10px;
+}
+
+.btn-editar{
+background:#f0ad4e;
+border:none;
+padding:6px 10px;
+border-radius:6px;
+cursor:pointer;
+color:white;
+}
+
+.btn-eliminar{
+background:red;
+border:none;
+padding:6px 10px;
+border-radius:6px;
+cursor:pointer;
+color:white;
+}
+
+/* logout */
+.btn-logout{
+background:red;
+color:white;
+border:none;
+padding:8px 15px;
+border-radius:8px;
+cursor:pointer;
+float:right;
+}

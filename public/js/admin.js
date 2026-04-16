@@ -9,13 +9,26 @@ function cargarProductos(){
         contenedor.innerHTML = "";
 
         data.forEach(p => {
-            contenedor.innerHTML += `
+    contenedor.innerHTML += `
+        <div class="admin-card">
+
+            <div class="admin-info">
+                <img src="${p.imagen}">
                 <div>
-                    <p>${p.nombre} - $${p.precio}</p>
-                    <button onclick="eliminar(${p.id})">Eliminar</button>
+                    <p class="admin-nombre">${p.nombre}</p>
+                    <p class="admin-precio">$${p.precio}</p>
+                    <small>${p.categoria}</small>
                 </div>
-            `;
-        });
+            </div>
+
+            <div class="admin-botones">
+                <button class="btn-editar" onclick="editar(${p.id})">✏️</button>
+                <button class="btn-eliminar" onclick="eliminar(${p.id})">❌</button>
+            </div>
+
+        </div>
+    `;
+});
     });
 }
 
@@ -42,3 +55,9 @@ function eliminar(id){
 
 // INICIAR
 cargarProductos();
+
+function logout(){
+    localStorage.removeItem("admin");
+    window.location.href = "/";
+}
+

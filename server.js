@@ -9,6 +9,18 @@ const PORT = process.env.PORT || 3000;
 // servir archivos estáticos
 app.use(express.static(path.join(__dirname, 'public')));
 
+// LOGIN ADMIN
+app.post('/api/login', (req, res) => {
+    const { usuario, password } = req.body;
+
+    // usuario fijo (puedes cambiarlo)
+    if(usuario === "admin" && password === "1234"){
+        res.json({ success: true });
+    } else {
+        res.json({ success: false });
+    }
+});
+
 // rutas
 app.get('/', (req, res)=>{
     res.sendFile(path.join(__dirname, 'views', 'index.html'));
@@ -102,6 +114,10 @@ app.put('/api/productos/:id', (req, res) => {
     fs.writeFileSync('./data/productos.json', JSON.stringify(productos, null, 2));
 
     res.json({mensaje: "Actualizado"});
+});
+
+app.get('/login', (req, res) => {
+    res.sendFile(__dirname + '/public/views/login.html');
 });
 
 app.get('/admin', (req, res) => {
