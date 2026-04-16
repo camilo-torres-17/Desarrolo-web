@@ -23,7 +23,7 @@
         <span>Carrito</span>
         <span id="contador-carrito">0</span>
     </a>
-</div>
+ </div>
                 </div>
             <div class="w-header">
                 <form class="xyz">
@@ -47,38 +47,11 @@
     </header>
 
     
-<h2 class="titulo-carrito">🛒 Carrito de Compras</h2>
+ <h2 class="titulo-carrito">🛒 Carrito de Compras</h2>
 
-<div id="lista-carrito" class="carrito-container"></div>
+ <div id="lista-carrito" class="carrito-container"></div>
 
-<h3 id="total-carrito"></h3>
+ <h3 id="total-carrito"></h3> 
 
-<script>
-let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-
-let contenedor = document.getElementById("lista-carrito");
-let total = 0;
-
-carrito.forEach((producto, index) => {
-    total += parseInt(producto.precio);
-
-    contenedor.innerHTML += `
-        <div class="item-carrito">
-            <img src="${producto.imagen}">
-            <div>
-                <p>${producto.nombre}</p>
-                <p>$${producto.precio}</p>
-            </div>
-            <button onclick="eliminar(${index})">❌</button>
-        </div>
-    `;
-});
-
-document.getElementById("total-carrito").innerText = "Total: $" + total;
-
-function eliminar(index){
-    carrito.splice(index,1);
-    localStorage.setItem("carrito", JSON.stringify(carrito));
-    location.reload();
-}
-</script>
+ <script src="/js/carrito.js"></script>
+</body>

@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "nombre": "Anillo Umbral",
+    "precio": 930000,
+    "imagen": "/images/inicio/anilloumbral.png",
+    "categoria": "anillos"
+  },
+  {
+    "id": 2,
+    "nombre": "Cadena Plana",
+    "precio": 1200000,
+    "imagen": "/images/inicio/cadenaplana.png",
+    "categoria": "cadenas"
+  }
+]
