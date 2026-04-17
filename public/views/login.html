@@ -1,39 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-</head>
-<body>
-   <header>
-        <div class="cabecera">
-            <img class="imgcabecera" src="/images/inicio/logo.png" alt="Algoritmos Preciosos">
-            <div class="titulo">
-                <h1>ALGORITMOS PRECIOSOS</h1>
-                <p>Diseño con Diamantes. Lógica con Lujo</p>
-                </div>
-            
-    </header>
-        </div>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-</body>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+
+<title>Login Admin</title>
+</head>
+
 <body>
+
+<header>
+    <div class="cabecera">
+        <img class="imgcabecera" src="/images/inicio/logo.png">
+        <div class="titulo">
+            <h1>ALGORITMOS PRECIOSOS</h1>
+            <p>Diseño con Diamantes. Lógica con Lujo</p>
+        </div>
+    </div>
+</header>
 
 <h2 style="text-align:center;">🔐 Login Administrador</h2>
 
-<div style="max-width:300px; margin:auto;">
-    <input id="usuario" type="text" placeholder="Usuario" style="width:100%; margin:10px 0;">
-    <input id="password" type="password" placeholder="Contraseña" style="width:100%; margin:10px 0;">
+<div style="max-width:300px; margin:30px auto;">
     
-    <button onclick="login()" style="width:100%;">Ingresar</button>
+    <input id="usuario" type="text" placeholder="Usuario" style="width:100%; margin:10px 0; padding:8px;">
+    
+    <input id="password" type="password" placeholder="Contraseña" style="width:100%; margin:10px 0; padding:8px;">
+    
+    <button type="button" onclick="login()" style="width:100%; padding:10px; background:#4dc1f2; color:white; border:none; border-radius:6px;">
+        Ingresar
+    </button>
+
 </div>
 
-<script src="/js/login.js"></script>
+<script>
+function login(){
+
+    let usuario = document.getElementById("usuario").value;
+    let password = document.getElementById("password").value;
+
+    if(usuario === "admin" && password === "1234"){
+        localStorage.setItem("admin", "true");
+        window.location.href = "/admin";
+    } else {
+        alert("Datos incorrectos");
+    }
+}
+</script>
 
 </body>
 </html>

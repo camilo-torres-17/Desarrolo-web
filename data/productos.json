@@ -52,5 +52,13 @@
     "categoria": "pulseras",
     "descripcion": "La elegancia de la joyería italiana en tu muñeca. Un tejido de eslabones cuadrados que ofrece un brillo uniforme y una resistencia excepcional. Un básico imprescindible.",
     "descuento": "No tiene descuento."
+  },
+  {
+    "id": 1776380048395,
+    "nombre": "Anillo Adeline",
+    "precio": "725000",
+    "categoria": "anillos",
+    "descripcion": "La elegancia no se improvisa",
+    "imagen": "/images/uploads/anillo3.png"
   }
 ]

@@ -34,17 +34,25 @@ function cargarProductos(){
 
 // CREAR
 function crearProducto(){
-    let producto = {
-        nombre: document.getElementById("nombre").value,
-        precio: document.getElementById("precio").value,
-        imagen: document.getElementById("imagen").value
-    };
 
-    fetch(API, {
+    let formData = new FormData();
+
+    formData.append("nombre", document.getElementById("nombre").value);
+    formData.append("precio", document.getElementById("precio").value);
+    formData.append("categoria", document.getElementById("categoria").value);
+    formData.append("descripcion", document.getElementById("descripcion").value);
+
+    let archivo = document.getElementById("imagen").files[0];
+    formData.append("imagen", archivo);
+
+    fetch("/api/productos", {
         method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(producto)
-    }).then(() => cargarProductos());
+        body: formData
+    })
+    .then(() => {
+        alert("Producto creado con imagen 📸");
+        cargarAdmin();
+    });
 }
 
 // ELIMINAR

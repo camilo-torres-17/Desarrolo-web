@@ -1,23 +1,52 @@
 const express = require('express');
+const multer = require('multer');
 const path = require('path');
 const app = express();
 const fs = require('fs');
+const ruta = path.join(__dirname, 'data', 'productos.json');
 app.use(express.json());
 
 const PORT = process.env.PORT || 3000;
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'public/images/uploads');
+    },
+    filename: (req, file, cb) => {
+        cb(null, Date.now() + "-" + file.originalname);
+    }
+});
+
+const upload = multer({ storage });
 
 // servir archivos estáticos
 app.use(express.static(path.join(__dirname, 'public')));
 
 // LOGIN ADMIN
-app.post('/api/login', (req, res) => {
-    const { usuario, password } = req.body;
+app.post('/api/productos', upload.single('imagen'), (req, res) => {
 
-    // usuario fijo (puedes cambiarlo)
-    if(usuario === "admin" && password === "1234"){
-        res.json({ success: true });
-    } else {
-        res.json({ success: false });
+    try {
+
+        let productos = JSON.parse(fs.readFileSync(ruta));
+
+        const nuevo = {
+            id: Date.now(),
+            nombre: req.body.nombre,
+            precio: req.body.precio,
+            categoria: req.body.categoria,
+            descripcion: req.body.descripcion,
+            imagen: req.file ? "/images/uploads/" + req.file.filename : ""
+        };
+
+        productos.push(nuevo);
+
+        fs.writeFileSync(ruta, JSON.stringify(productos, null, 2));
+
+        res.json(nuevo);
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Error guardando producto");
     }
 });
 

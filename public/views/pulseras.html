@@ -26,12 +26,13 @@
                     </a>
                     </div>
                 </div>
+
             <div class="w-header">
-                <form class="xyz">
-                    <input type="text" placeholder="Buscar....">
-                    <button><i class="fa fa-search" aria-hidden="true"></i></button>
-                </form>
-            </div>
+        <form class="xyz" onsubmit="event.preventDefault(); buscarProductos();">
+            <input type="text" placeholder="Buscar..." onkeyup="buscarProductos()">
+            <button><i class="fa fa-search"></i></button>
+        </form>
+    </div>
 
             <nav class="menu">
                 <ul>
@@ -47,32 +48,49 @@
         </div>
     </header>
 
-
-
 <main>
     <section>
-        <h3>Pulseras</h3>
-        <div class="vista">
-            <article class="tarjeta">
-                    <img src="/images/inicio/pulseraitaliana.png" class="producto-img" alt="">
-                    <div class="caja">
-                        <div class="flex">
-                            <p>Pulsera Italiana</p>
-                            </div>
-                        <div>
-                            <p>$1.600.000</p>
-                        </div> 
-                     </div>
-                       <button class="btn-carrito" 
-                        onclick="agregarCarrito('Anillo Umbral','930000','/images/anilloumbral.png')">
-                        <i class="fas fa-cart-plus"></i> Agregar
-                        </button>
+        <div id="resultados-busqueda" class="vista"></div>
+        <h3>Pulseras<h3>
 
-                            <button class="btn-comprar" onclick="comprar('Anillo Umbral')">
-                            <i class="fas fa-credit-card"></i> Comprar
-                            </button>
-            </article>
-
-        </div>
+        <div class="vista" id="contenedor-productos"></div>
     </section>
 </main>
+
+<!-- MODAL -->
+<div id="detalle-producto"></div>
+
+<!-- SCRIPTS -->
+<script src="/js/product-detail.js"></script>
+<script src="/js/carrito.js"></script>
+<script src="/js/productos.js"></script>
+
+<script>
+    cargarProductos("pulseras"); // SOLO ANILLOS
+</script>
+
+</body>
+
+<footer>
+        <section>
+            <div>
+                <h2>Contactanos</h2>
+                <h4>info@algoritmospreciosos.com</h4>
+                <h4>3123164110</h4>
+                <h4>Cl. 12 #8-2 a 8-84</h4>
+                <h4>Sangil, Santander, Colombia</h4>
+            </div>
+            <div>
+                <h2>Informacion</h2>
+                <h4>Preguntas frecuentes</h4>
+                <h4>Politica de envios</h4>
+                <h4>Cambios y devoluciones</h4>
+                <h4>Politica de garantia</h4>
+            </div>
+            <div>
+                 <h2>Suscribete</h2>
+                <h4>¡Unete a nuestra comunidad!</h4>
+            </div>
+        </section>
+    </footer>
+</html>

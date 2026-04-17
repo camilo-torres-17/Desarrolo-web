@@ -53,3 +53,46 @@ function cargarProductos(categoria){
     })
     .catch(error => console.log("Error cargando productos:", error));
 }
+
+function buscarProductos(){
+
+    let texto = document.querySelector(".xyz input").value.toLowerCase();
+
+    fetch("/api/productos")
+    .then(res => res.json())
+    .then(productos => {
+
+        let contenedor = document.getElementById("resultados-busqueda");
+        contenedor.innerHTML = "";
+
+        let filtrados = productos.filter(p => 
+            p.nombre.toLowerCase().includes(texto) ||
+            p.categoria.toLowerCase().includes(texto)
+        );
+
+        if(filtrados.length === 0){
+            contenedor.innerHTML = "<p>No se encontraron productos</p>";
+            return;
+        }
+
+        filtrados.forEach(p => {
+            contenedor.innerHTML += `
+                <article class="tarjeta">
+                    <img src="${p.imagen}" class="producto-img">
+
+                    <div class="caja">
+                        <p>${p.nombre}</p>
+                        <p>$${Number(p.precio).toLocaleString()}</p>
+                    </div>
+
+                    <div class="botones-producto">
+                        <button class="btn-carrito"
+                        onclick="agregarCarrito('${p.nombre}','${p.precio}','${p.imagen}')">
+                        <i class="fas fa-cart-plus"></i> Agregar
+                        </button>
+                    </div>
+                </article>
+            `;
+        });
+    });
+}
