@@ -1,5 +1,4 @@
 const express = require('express');
-const multer = require('multer');
 const path = require('path');
 const app = express();
 const fs = require('fs');
@@ -8,16 +7,18 @@ app.use(express.json());
 
 const PORT = process.env.PORT || 3000;
 
+const multer = require('multer');
+
 const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
+    destination: function (req, file, cb) {
         cb(null, 'public/images/uploads');
     },
-    filename: (req, file, cb) => {
+    filename: function (req, file, cb) {
         cb(null, Date.now() + "-" + file.originalname);
     }
 });
 
-const upload = multer({ storage });
+const upload = multer({ storage: storage });
 
 // servir archivos estáticos
 app.use(express.static(path.join(__dirname, 'public')));
@@ -25,29 +26,27 @@ app.use(express.static(path.join(__dirname, 'public')));
 // LOGIN ADMIN
 app.post('/api/productos', upload.single('imagen'), (req, res) => {
 
-    try {
+    const ruta = path.join(__dirname, 'data', 'productos.json');
+    let productos = JSON.parse(fs.readFileSync(ruta));
 
-        let productos = JSON.parse(fs.readFileSync(ruta));
+  const imagenRuta = req.file 
+    ? "/images/uploads/" + req.file.filename 
+    : "/images/default.png";
 
-        const nuevo = {
-            id: Date.now(),
-            nombre: req.body.nombre,
-            precio: req.body.precio,
-            categoria: req.body.categoria,
-            descripcion: req.body.descripcion,
-            imagen: req.file ? "/images/uploads/" + req.file.filename : ""
-        };
+    const nuevo = {
+        id: Date.now(),
+        nombre: req.body.nombre,
+        precio: req.body.precio,
+        categoria: req.body.categoria,
+        descripcion: req.body.descripcion,
+        imagen: "/images/uploads/" + req.file.filename
+    };
 
-        productos.push(nuevo);
+    productos.push(nuevo);
 
-        fs.writeFileSync(ruta, JSON.stringify(productos, null, 2));
+    fs.writeFileSync(ruta, JSON.stringify(productos, null, 2));
 
-        res.json(nuevo);
-
-    } catch (error) {
-        console.error(error);
-        res.status(500).send("Error guardando producto");
-    }
+    res.json(nuevo);
 });
 
 // rutas

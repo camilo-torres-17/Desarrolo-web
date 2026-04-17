@@ -35,23 +35,37 @@ function cargarProductos(){
 // CREAR
 function crearProducto(){
 
+    let imagenInput = document.getElementById("imagen");
+    let imagen = imagenInput.files[0];
+
+    console.log("Imagen:", imagen); // 🔍 DEBUG
+
+    if(!imagen){
+        alert("Selecciona una imagen");
+        return;
+    }
+
     let formData = new FormData();
 
     formData.append("nombre", document.getElementById("nombre").value);
     formData.append("precio", document.getElementById("precio").value);
     formData.append("categoria", document.getElementById("categoria").value);
     formData.append("descripcion", document.getElementById("descripcion").value);
+    formData.append("imagen", imagen);
 
-    let archivo = document.getElementById("imagen").files[0];
-    formData.append("imagen", archivo);
-
-    fetch("/api/productos", {
-        method: "POST",
+    fetch("/api/productos",{
+        method:"POST",
         body: formData
     })
-    .then(() => {
-        alert("Producto creado con imagen 📸");
-        cargarAdmin();
+    .then(res => res.json())
+    .then(data => {
+        console.log(data);
+        alert("Producto creado");
+        cargarProductos();
+    })
+    .catch(err => {
+        console.error("ERROR:", err);
+        alert("Error al guardar");
     });
 }
 
@@ -68,4 +82,6 @@ function logout(){
     localStorage.removeItem("admin");
     window.location.href = "/";
 }
+
+console.log(document.getElementById("imagen").files[0]);
 

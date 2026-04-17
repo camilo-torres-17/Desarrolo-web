@@ -35,8 +35,12 @@ function agregarCarrito(nombre, precio, imagen){
 }
 
 function actualizarContador(){
+    let contador = document.getElementById("contador-carrito");
+
+    if(!contador) return; // 🔥 ESTA LÍNEA ARREGLA TODO
+
     let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-    document.getElementById("contador-carrito").innerText = carrito.length;
+    contador.innerText = carrito.length;
 }
 
 actualizarContador();

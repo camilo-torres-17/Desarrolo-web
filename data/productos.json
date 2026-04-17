@@ -60,5 +60,13 @@
     "categoria": "anillos",
     "descripcion": "La elegancia no se improvisa",
     "imagen": "/images/uploads/anillo3.png"
+  },
+  {
+    "id": 1776386721082,
+    "nombre": "Dije Bailarina",
+    "precio": "400000",
+    "categoria": "dijes",
+    "descripcion": "La elegancia no se improvisa.",
+    "imagen": "/images/uploads/1776386721079-dijebailarina.png"
   }
 ]
