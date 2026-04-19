@@ -1,1 +1,10 @@
-[]
+[
+  {
+    "id": 1776615476541,
+    "nombre": "Dije Bailarina",
+    "precio": "400000",
+    "categoria": "dijes",
+    "descripcion": "La elegancia no se improvisa.",
+    "imagen": "/images/uploads/1776615476529-dijebailarina.png"
+  }
+]
