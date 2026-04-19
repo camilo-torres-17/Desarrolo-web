@@ -29,10 +29,10 @@
     </div>
 
    <div class="w-header">
-        <form class="xyz" onsubmit="event.preventDefault(); buscarProductos();">
-            <input type="text" placeholder="Buscar..." onkeyup="buscarProductos()">
-            <button><i class="fa fa-search"></i></button>
-        </form>
+        <form class="xyz" onsubmit="buscar(event)">
+    <input type="text" id="busqueda" placeholder="Buscar producto...">
+    <button type="submit"><i class="fa fa-search"></i></button>
+</form>
     </div>
 
     <nav class="menu">
@@ -236,5 +236,6 @@
 <!-- SCRIPTS -->
 <script src="/js/product-detail.js"></script>
 <script src="/js/carrito.js"></script>
+<script> src="/js/productos.js"</script>
 </body>
 </html>
