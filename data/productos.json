@@ -6,5 +6,13 @@
     "categoria": "dijes",
     "descripcion": "La elegancia no se improvisa.",
     "imagen": "/images/uploads/1776615476529-dijebailarina.png"
+  },
+  {
+    "id": 1776727170124,
+    "nombre": "Anillo Adeline",
+    "precio": "725000",
+    "categoria": "anillos",
+    "descripcion": "La elegancia no se improvisa.",
+    "imagen": "/images/uploads/1776727170120-anillo3.png"
   }
 ]
