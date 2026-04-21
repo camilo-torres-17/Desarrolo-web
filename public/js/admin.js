@@ -35,15 +35,8 @@ function cargarProductos(){
 // CREAR
 function crearProducto(){
 
-    let imagenInput = document.getElementById("imagen");
-    let imagen = imagenInput.files[0];
-
-    console.log("Imagen:", imagen); // 🔍 DEBUG
-
-    if(!imagen){
-        alert("Selecciona una imagen");
-        return;
-    }
+    let btn = document.querySelector(".btn-guardar");
+    btn.disabled = true; // 🔒 bloquea botón
 
     let formData = new FormData();
 
@@ -51,6 +44,8 @@ function crearProducto(){
     formData.append("precio", document.getElementById("precio").value);
     formData.append("categoria", document.getElementById("categoria").value);
     formData.append("descripcion", document.getElementById("descripcion").value);
+
+    let imagen = document.getElementById("imagen").files[0];
     formData.append("imagen", imagen);
 
     fetch("/api/productos",{
@@ -58,14 +53,13 @@ function crearProducto(){
         body: formData
     })
     .then(res => res.json())
-    .then(data => {
-        console.log(data);
+    .then(()=>{
         alert("Producto creado");
         cargarProductos();
+        btn.disabled = false; // 🔓 desbloquear
     })
-    .catch(err => {
-        console.error("ERROR:", err);
-        alert("Error al guardar");
+    .catch(()=>{
+        btn.disabled = false;
     });
 }
 
