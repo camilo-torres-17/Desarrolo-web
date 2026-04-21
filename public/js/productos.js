@@ -41,10 +41,6 @@ function cargarProductos(categoria){
                         <i class="fas fa-cart-plus"></i> Agregar
                         </button>
 
-                        <button class="btn-comprar"
-                        onclick="event.stopPropagation(); comprar('${p.nombre}')">
-                        <i class="fas fa-credit-card"></i> Comprar
-                        </button>
                     </div>
 
                 </article>
