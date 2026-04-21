@@ -40,16 +40,6 @@ function cargarProductos(categoria){
                         onclick="event.stopPropagation(); agregarCarrito('${p.nombre}','${p.precio}','${p.imagen}')">
                         <i class="fas fa-cart-plus"></i> Agregar
                         </button>
-
-                        <button class="btn-comprar"
-                        onclick="event.stopPropagation(); comprar('${p.nombre}')">
-                        <i class="fas fa-credit-card"></i> Comprar
-                        </button>
-                    </div>
-
-                </article>
-            `;
-        });
     })
     .catch(error => console.log("Error cargando productos:", error));
 }
