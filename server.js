@@ -96,16 +96,34 @@ app.delete('/api/productos/:id', (req, res) => {
 });
 
 // 🔹 PUT (EDITAR)
-app.put('/api/productos/:id', (req, res) => {
-    let productos = JSON.parse(fs.readFileSync(ruta));
+app.put('/api/productos/:id', upload.single('imagen'), (req, res) => {
 
-    productos = productos.map(p =>
-        p.id == req.params.id ? { ...p, ...req.body } : p
-    );
+    let productos = JSON.parse(fs.readFileSync('./data/productos.json'));
 
-    fs.writeFileSync(ruta, JSON.stringify(productos, null, 2));
+    productos = productos.map(p => {
 
-    res.json({ mensaje: "Actualizado" });
+        if(p.id == req.params.id){
+
+            return {
+                ...p,
+                nombre: req.body.nombre,
+                precio: req.body.precio,
+                categoria: req.body.categoria,
+                descripcion: req.body.descripcion,
+
+                // 🔥 SOLO CAMBIA IMAGEN SI SUBEN UNA NUEVA
+                imagen: req.file 
+                    ? "/images/uploads/" + req.file.filename 
+                    : p.imagen
+            };
+        }
+
+        return p;
+    });
+
+    fs.writeFileSync('./data/productos.json', JSON.stringify(productos, null, 2));
+
+    res.json({mensaje: "Actualizado"});
 });
 
 // =========================
@@ -150,6 +168,14 @@ app.get('/esmeraldas', (req, res) => {
 
 app.get('/carrito', (req, res) => {
     res.sendFile(__dirname + '/public/views/carrito.html');
+});
+
+app.get('/lineahombre', (req, res) => {
+    res.sendFile(__dirname + '/public/views/lineahombre.html');
+});
+
+app.get('/lineamujer', (req, res) => {
+    res.sendFile(__dirname + '/public/views/lineamujer.html');
 });
 
 // 🚀 INICIAR

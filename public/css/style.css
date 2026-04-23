@@ -579,3 +579,19 @@ border-radius:8px;
 cursor:pointer;
 float:right;
 }
+
+#preview-img{
+    width: 120px;
+    height: 120px;
+    border-radius: 10px;
+    border: 2px dashed #ccc;
+    padding: 5px;
+}
+
+#formulario-admin{
+    transition: 0.3s;
+}
+
+#formulario-admin.activo{
+    box-shadow: 0 0 10px #00bcd4;
+}

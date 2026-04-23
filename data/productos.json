@@ -62,5 +62,133 @@
     "categoria": "dijes",
     "descripcion": "La elegancia no se improvisa.",
     "imagen": "/images/uploads/dijebailarina.png"
+  },
+  {
+    "id": 1776976788703,
+    "nombre": "Cadena Cubana",
+    "precio": "750000",
+    "categoria": "cadenas",
+    "descripcion": "La elegancia no se improvisa.",
+    "imagen": "/images/uploads/cadenacubana.png"
+  },
+  {
+    "id": 1776976880251,
+    "nombre": "Cadena Crispeta",
+    "precio": "600000",
+    "categoria": "cadenas",
+    "descripcion": "La elegancia no se improvisa.",
+    "imagen": "/images/uploads/cadenacrispeta.png"
+  },
+  {
+    "id": 1776977627530,
+    "nombre": "Dije Guadalupana",
+    "precio": "500000",
+    "categoria": "dijes",
+    "descripcion": "La elegancia no se improvisa.",
+    "imagen": "/images/uploads/dijeguadalupana.jpg"
+  },
+  {
+    "id": 1776977708057,
+    "nombre": "Candongas Calabaza",
+    "precio": "200000",
+    "categoria": "aretes",
+    "descripcion": "La elegancia no se improvisa.",
+    "imagen": "/images/uploads/candongascalabaza.jpg"
+  },
+  {
+    "id": 1776977757360,
+    "nombre": "Candongas Espiral",
+    "precio": "450000",
+    "categoria": "aretes",
+    "descripcion": "La elegancia no se improvisa.",
+    "imagen": "/images/uploads/candongasespiral.webp"
+  },
+  {
+    "id": 1776977926481,
+    "nombre": "Candongas Kasandra",
+    "precio": "450000",
+    "categoria": "aretes",
+    "descripcion": "La elegancia no se improvisa.",
+    "imagen": "/images/uploads/candongaskasandra.jpg"
+  },
+  {
+    "id": 1776978204877,
+    "nombre": "Pulsera Especial Tensha",
+    "precio": "750000",
+    "categoria": "pulseras",
+    "descripcion": "La elegancia no se improvisa.",
+    "imagen": "/images/uploads/pulseratensha.jpg"
+  },
+  {
+    "id": 1776978440400,
+    "nombre": "Topo Esmeralda Julia",
+    "precio": "900000",
+    "categoria": "esmeraldas",
+    "descripcion": "La elegancia no se improvisa.",
+    "imagen": "/images/uploads/esmeraldajuliatopo.jpg"
+  },
+  {
+    "id": 1776978512680,
+    "nombre": "Topo Esmeralda Maral",
+    "precio": "800000",
+    "categoria": "esmeraldas",
+    "descripcion": "La elegancia no se improvisa.",
+    "imagen": "/images/uploads/esmeraldamaraltopo.jpg"
+  },
+  {
+    "id": 1776978559961,
+    "nombre": "Topo Esmeralda Napoles",
+    "precio": "950000",
+    "categoria": "esmeraldas",
+    "descripcion": "La elegancia no se improvisa.",
+    "imagen": "/images/uploads/esmeraldanapolestopo.jpg"
+  },
+  {
+    "id": 1776981196657,
+    "nombre": "Anillo Hombre Alma Firme",
+    "precio": "1100000",
+    "categoria": "lineaH",
+    "descripcion": "La elegancia no se improvisa.",
+    "imagen": "/images/uploads/almafirmehombre.jpg"
+  },
+  {
+    "id": 1776981567864,
+    "nombre": "Anillo Hombre Cruz Circonada",
+    "precio": "1000000",
+    "categoria": "lineaH",
+    "descripcion": "La elegancia no se improvisa.",
+    "imagen": "/images/uploads/cruzcircondahombre.jpg"
+  },
+  {
+    "id": 1776981631095,
+    "nombre": "Anillo Hombre Sendero",
+    "precio": "900000",
+    "categoria": "lineaH",
+    "descripcion": "La elegancia no se improvisa.",
+    "imagen": "/images/uploads/hombresendero.jpg"
+  },
+  {
+    "id": 1776981800104,
+    "nombre": "Choker Summer",
+    "precio": "500000",
+    "categoria": "lineaM",
+    "descripcion": "La elegancia no se improvisa.",
+    "imagen": "/images/uploads/chokersummermujer.png"
+  },
+  {
+    "id": 1776981875200,
+    "nombre": "Cadena Especial Kasandra",
+    "precio": "860000",
+    "categoria": "lineaM",
+    "descripcion": "La elegancia no se improvisa.",
+    "imagen": "/images/uploads/especialkasandramujer.jpg"
+  },
+  {
+    "id": 1776981937456,
+    "nombre": "Cadena Especial Rochelle",
+    "precio": "780000",
+    "categoria": "lineaM",
+    "descripcion": "La elegancia no se improvisa.",
+    "imagen": "/images/uploads/especialrochellemujer.jpg"
   }
 ]
