@@ -1,5 +1,53 @@
 [
   {
+    "id": 1,
+    "nombre": "Anillo Umbral",
+    "precio": "930000",
+    "categoria": "anillos",
+    "descripcion": "La elegancia no se improvisa.",
+    "imagen": "/images/inicio/anilloumbral.png"
+  },
+  {
+    "id": 2,
+    "nombre": "Cadena Plana",
+    "precio": "1200000",
+    "categoria": "cadenas",
+    "descripcion": "La elegancia no se improvisa.",
+    "imagen": "/images/inicio/cadenaplana.png"
+  },
+  {
+    "id": 3,
+    "nombre": "Anillo Hombre",
+    "precio": "1800000",
+    "categoria": "anillos",
+    "descripcion": "La elegancia no se improvisa.",
+    "imagen": "/images/inicio/anillohombre.png"
+  },
+  {
+    "id": 4,
+    "nombre": "Pulsera Silente",
+    "precio": "1300000",
+    "categoria": "pulseras",
+    "descripcion": "La elegancia no se improvisa.",
+    "imagen": "/images/inicio/pulserasilente.png"
+  },
+  {
+    "id": 5,
+    "nombre": "Dije Esmeralda",
+    "precio": "900000",
+    "categoria": "dijes",
+    "descripcion": "La elegancia no se improvisa.",
+    "imagen": "/images/inicio/dijeesmeralda.png"
+  },
+  {
+    "id": 6,
+    "nombre": "Pulsera Italiana",
+    "precio": "1300000",
+    "categoria": "pulseras",
+    "descripcion": "La elegancia no se improvisa.",
+    "imagen": "/images/inicio/pulseraitaliana.png"
+  },
+  {
     "id": 1776615476541,
     "nombre": "Dije Bailarina",
     "precio": "400000",
