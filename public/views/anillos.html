@@ -28,11 +28,13 @@
                 </div>
 
             <div class="w-header">
-        <form class="xyz" onsubmit="event.preventDefault(); buscarProductos();">
-            <input type="text" placeholder="Buscar..." onkeyup="buscarProductos()">
-            <button><i class="fa fa-search"></i></button>
-        </form>
-    </div>
+    <form class="xyz" onsubmit="return false;">
+        <input type="text" id="input-busqueda" placeholder="Buscar...">
+        <button type="button">
+            <i class="fa fa-search"></i>
+        </button>
+    </form>
+</div>
 
             <nav class="menu">
                 <ul>
