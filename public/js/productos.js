@@ -1,6 +1,6 @@
 const API = "/api/productos";
 
-// CARGAR PRODUCTOS
+// 🔹 CARGAR PRODUCTOS
 function cargarProductos(categoria){
 
     fetch(API)
@@ -12,7 +12,6 @@ function cargarProductos(categoria){
 
         contenedor.innerHTML = "";
 
-        // FILTRAR POR CATEGORIA
         let filtrados = categoria 
             ? productos.filter(p => p.categoria === categoria)
             : productos;
@@ -21,11 +20,11 @@ function cargarProductos(categoria){
             contenedor.innerHTML += `
                 <article class="tarjeta"
                 onclick="verDetalle(
-                '${p.nombre}',
-                '${p.precio}',
-                '${p.descripcion || "Sin descripción"}',
-                '${p.imagen}',
-                '${p.descuento || "Sin descuento"}'
+                    '${p.nombre}',
+                    '${p.precio}',
+                    '${p.descripcion || "Sin descripción"}',
+                    '${p.imagen}',
+                    '${p.descuento || "Sin descuento"}'
                 )">
 
                     <img src="${p.imagen}" class="producto-img">
@@ -40,28 +39,40 @@ function cargarProductos(categoria){
                         onclick="event.stopPropagation(); agregarCarrito('${p.nombre}','${p.precio}','${p.imagen}')">
                         <i class="fas fa-cart-plus"></i> Agregar
                         </button>
-
                     </div>
 
                 </article>
             `;
         });
+
     })
     .catch(error => console.log("Error cargando productos:", error));
 }
 
+
+// 🔍 BUSCADOR (EN TIEMPO REAL)
 function buscarProductos(){
 
-    let texto = document.querySelector(".xyz input").value.toLowerCase();
+    let input = document.getElementById("input-busqueda");
+    let contenedor = document.getElementById("resultados-busqueda");
 
-    fetch("/api/productos")
+    if(!input || !contenedor) return;
+
+    let texto = input.value.toLowerCase();
+
+    // 👉 si está vacío, limpiar
+    if(texto === ""){
+        contenedor.innerHTML = "";
+        return;
+    }
+
+    fetch(API)
     .then(res => res.json())
     .then(productos => {
 
-        let contenedor = document.getElementById("resultados-busqueda");
         contenedor.innerHTML = "";
 
-        let filtrados = productos.filter(p => 
+        let filtrados = productos.filter(p =>
             p.nombre.toLowerCase().includes(texto) ||
             p.categoria.toLowerCase().includes(texto)
         );
@@ -72,23 +83,65 @@ function buscarProductos(){
         }
 
         filtrados.forEach(p => {
-            contenedor.innerHTML += `
-                <article class="tarjeta">
-                    <img src="${p.imagen}" class="producto-img">
+    contenedor.innerHTML += `
+        <div class="item-busqueda"
+        onclick="verDetalle(
+            '${p.nombre}',
+            '${p.precio}',
+            '${p.descripcion || ""}',
+            '${p.imagen}',
+            'Sin descuento'
+        )">
 
-                    <div class="caja">
-                        <p>${p.nombre}</p>
-                        <p>$${Number(p.precio).toLocaleString()}</p>
-                    </div>
+            <div class="item-info">
+                <img src="${p.imagen}">
+                <div class="item-texto">
+                    <span class="item-nombre">${p.nombre}</span>
+                    <small>Categoría: ${p.categoria}</small>
+                </div>
+            </div>
 
-                    <div class="botones-producto">
-                        <button class="btn-carrito"
-                        onclick="agregarCarrito('${p.nombre}','${p.precio}','${p.imagen}')">
-                        <i class="fas fa-cart-plus"></i> Agregar
-                        </button>
-                    </div>
-                </article>
-            `;
-        });
-    });
+            <div style="display:flex; align-items:center; gap:10px;">
+
+                <div class="item-precio">
+                    $${Number(p.precio).toLocaleString()}
+                </div>
+
+                <!-- 🔥 BOTÓN CARRITO -->
+                <button class="btn-carrito-mini"
+                onclick="event.stopPropagation(); agregarCarrito('${p.nombre}','${p.precio}','${p.imagen}')">
+                    <i class="fas fa-cart-plus"></i>
+                </button>
+
+            </div>
+
+        </div>
+    `;
+});
+
+if(texto === ""){
+    contenedor.innerHTML = "";
+    return;
 }
+
+    })
+    .catch(err => console.log("Error en búsqueda:", err));
+}
+
+
+// 🔥 ACTIVAR BUSCADOR AUTOMÁTICO
+document.addEventListener("DOMContentLoaded", () => {
+
+    const input = document.getElementById("input-busqueda");
+
+    if(!input) return;
+
+    input.addEventListener("input", buscarProductos);
+
+});
+
+document.addEventListener("click", (e) => {
+    if(!e.target.closest(".w-header")){
+        document.getElementById("resultados-busqueda").innerHTML = "";
+    }
+});

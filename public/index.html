@@ -28,12 +28,14 @@
         </div>
     </div>
 
-   <div class="w-header">
-        <form class="xyz" onsubmit="buscarProductos(); return false;">
-    <input type="text" placeholder="Buscar..." required>
-    <button type="submit"><i class="fa fa-search"></i></button>
-</form>
-    </div>
+  <div class="w-header">
+    <form class="xyz" onsubmit="return false;">
+        <input type="text" id="input-busqueda" placeholder="Buscar...">
+        <button type="button">
+            <i class="fa fa-search"></i>
+        </button>
+    </form>
+</div>
 
     <nav class="menu">
         <ul>
@@ -45,12 +47,13 @@
             <li><a href="/esmeraldas">Esmeraldas</a></li>
         </ul>
     </nav>
+
+     <div id="resultados-busqueda" class="busqueda-dropdown"></div>
+
 </header>
 
 <main>
     <section>
-
-        <div id="resultados-busqueda" class="vista"></div>
 
         <h3>Lo más vendido</h3>
         <div class="vista">
@@ -231,6 +234,6 @@
 <!-- SCRIPTS -->
 <script src="/js/product-detail.js"></script>
 <script src="/js/carrito.js"></script>
-<script> src="/js/productos.js"</script>
+<script src="/js/productos.js"></script>
 </body>
 </html>
