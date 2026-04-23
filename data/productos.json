@@ -48,19 +48,19 @@
     "imagen": "/images/inicio/pulseraitaliana.png"
   },
   {
-    "id": 1776615476541,
-    "nombre": "Dije Bailarina",
-    "precio": "400000",
-    "categoria": "dijes",
-    "descripcion": "La elegancia no se improvisa.",
-    "imagen": "/images/uploads/1776615476529-dijebailarina.png"
-  },
-  {
-    "id": 1776740698382,
+    "id": 1776971927253,
     "nombre": "Anillo Adeline",
     "precio": "725000",
     "categoria": "anillos",
     "descripcion": "La elegancia no se improvisa.",
-    "imagen": "/images/uploads/1776740698380-anillo3.png"
+    "imagen": "/images/uploads/anillo3.png"
+  },
+  {
+    "id": 1776972003800,
+    "nombre": "Dije Bailarina",
+    "precio": "400000",
+    "categoria": "dijes",
+    "descripcion": "La elegancia no se improvisa.",
+    "imagen": "/images/uploads/dijebailarina.png"
   }
 ]

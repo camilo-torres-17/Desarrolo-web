@@ -15,14 +15,33 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // 🖼️ MULTER (subida de imágenes)
 const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
+
+    destination: function (req, file, cb) {
         cb(null, 'public/images/uploads');
     },
-    filename: (req, file, cb) => {
-        cb(null, Date.now() + "-" + file.originalname);
+
+    filename: function (req, file, cb) {
+
+        const nombre = file.originalname;
+
+        const rutaArchivo = path.join(
+            __dirname,
+            'public/images/uploads',
+            nombre
+        );
+
+        // 🔍 Si ya existe, no duplicar
+        if (fs.existsSync(rutaArchivo)) {
+            req.fileExist = true;
+            return cb(null, nombre);
+        }
+
+        req.fileExist = false;
+        cb(null, nombre);
     }
 });
-const upload = multer({ storage });
+
+const upload = multer({ storage: storage });
 
 // =========================
 // 📦 API PRODUCTOS
@@ -39,9 +58,15 @@ app.post('/api/productos', upload.single('imagen'), (req, res) => {
 
     let productos = JSON.parse(fs.readFileSync(ruta));
 
-    const imagenRuta = req.file
-        ? "/images/uploads/" + req.file.filename
-        : "/images/default.png";
+    let imagenRuta;
+
+    if (req.fileExist) {
+        // 👉 ya existía la imagen
+        imagenRuta = "/images/uploads/" + req.file.originalname;
+    } else {
+        // 👉 nueva imagen
+        imagenRuta = "/images/uploads/" + req.file.filename;
+    }
 
     const nuevo = {
         id: Date.now(),
