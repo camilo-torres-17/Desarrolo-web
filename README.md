@@ -114,8 +114,8 @@ Las categorías de los productos deben coincidir exactamente con los valores uti
 
 ---
 
-## Autor
+## Autores
 
-Stefania Mendez Forero
-Edinson Fernando Rincon Estevez
-Camilo Andres Torres Mendoza
+* Stefania Mendez Forero
+* Edinson Fernando Rincon Estevez
+* Camilo Andres Torres Mendoza
