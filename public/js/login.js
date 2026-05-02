@@ -12,7 +12,6 @@ function login(){
     .then(res => res.json())
     .then(data => {
         if(data.success){
-            localStorage.setItem("admin", true);
             window.location.href = "/admin";
         } else {
             alert("Datos incorrectos");

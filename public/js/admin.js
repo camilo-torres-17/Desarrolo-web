@@ -132,8 +132,14 @@ document.addEventListener("DOMContentLoaded", () => {
 // LOGOUT
 // =======================
 function logout(){
-    localStorage.removeItem("admin");
-    window.location.href = "/";
+    fetch('/api/logout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' }
+    })
+    .then(res => res.json())
+    .then(() => {
+        window.location.href = "/";
+    });
 }
 
 // =======================

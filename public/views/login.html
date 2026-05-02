@@ -36,20 +36,7 @@
 
 </div>
 
-<script>
-function login(){
-
-    let usuario = document.getElementById("usuario").value;
-    let password = document.getElementById("password").value;
-
-    if(usuario === "admin" && password === "1234"){
-        localStorage.setItem("admin", "true");
-        window.location.href = "/admin";
-    } else {
-        alert("Datos incorrectos");
-    }
-}
-</script>
+<script src="/js/login.js"></script>
 
 </body>
 </html>

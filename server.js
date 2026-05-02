@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs');
 const multer = require('multer');
+const session = require('express-session');
 
 const app = express();
 const PORT = 3000;
@@ -11,7 +12,44 @@ const ruta = path.join(__dirname, 'data', 'productos.json');
 
 // 📦 Middleware
 app.use(express.json());
+app.use(session({
+    secret: 'algoritmos-preciosos-secreto',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        httpOnly: true,
+        maxAge: 1000 * 60 * 60 // 1 hora
+    }
+}));
 app.use(express.static(path.join(__dirname, 'public')));
+
+const auth = (req, res, next) => {
+    if (req.session && req.session.authenticated) {
+        return next();
+    }
+    res.status(401).json({ error: 'No autorizado' });
+};
+
+app.post('/api/login', (req, res) => {
+    const { usuario, password } = req.body;
+
+    if (usuario === 'admin' && password === '1234') {
+        req.session.authenticated = true;
+        return res.json({ success: true });
+    }
+
+    res.json({ success: false });
+});
+
+app.post('/api/logout', (req, res) => {
+    req.session.destroy(err => {
+        if (err) {
+            return res.status(500).json({ success: false, error: 'Error al cerrar sesión' });
+        }
+        res.clearCookie('connect.sid');
+        res.json({ success: true });
+    });
+});
 
 // 🖼️ MULTER (subida de imágenes)
 const storage = multer.diskStorage({
@@ -54,7 +92,7 @@ app.get('/api/productos', (req, res) => {
 });
 
 // 🔹 POST (CREAR CON IMAGEN)
-app.post('/api/productos', upload.single('imagen'), (req, res) => {
+app.post('/api/productos', auth, upload.single('imagen'), (req, res) => {
 
     let productos = JSON.parse(fs.readFileSync(ruta));
 
@@ -85,7 +123,7 @@ app.post('/api/productos', upload.single('imagen'), (req, res) => {
 });
 
 // 🔹 DELETE
-app.delete('/api/productos/:id', (req, res) => {
+app.delete('/api/productos/:id', auth, (req, res) => {
     let productos = JSON.parse(fs.readFileSync(ruta));
 
     productos = productos.filter(p => p.id != req.params.id);
@@ -96,7 +134,7 @@ app.delete('/api/productos/:id', (req, res) => {
 });
 
 // 🔹 PUT (EDITAR)
-app.put('/api/productos/:id', upload.single('imagen'), (req, res) => {
+app.put('/api/productos/:id', auth, upload.single('imagen'), (req, res) => {
 
     let productos = JSON.parse(fs.readFileSync('./data/productos.json'));
 
@@ -139,7 +177,10 @@ app.get('/login', (req, res) => {
 });
 
 app.get('/admin', (req, res) => {
-    res.sendFile(__dirname + '/public/views/admin.html');
+    if (req.session && req.session.authenticated) {
+        return res.sendFile(__dirname + '/public/views/admin.html');
+    }
+    res.redirect('/login');
 });
 
 app.get('/anillos', (req, res) => {
