@@ -15,10 +15,12 @@ app.use(express.json());
 app.use(session({
     secret: 'algoritmos-preciosos-secreto',
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
     cookie: {
         httpOnly: true,
-        maxAge: 1000 * 60 * 60 // 1 hora
+        maxAge: 1000 * 60 * 60,
+        secure: false, // Para desarrollo local
+        sameSite: false // Para desarrollo local
     }
 }));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -49,6 +51,30 @@ app.post('/api/logout', (req, res) => {
         res.clearCookie('connect.sid');
         res.json({ success: true });
     });
+});
+
+app.post('/api/subscribe', (req, res) => {
+    const { email } = req.body;
+    const correo = typeof email === 'string' ? email.trim().toLowerCase() : '';
+
+    if (!correo || !/^\S+@\S+\.\S+$/.test(correo)) {
+        return res.status(400).json({ success: false, error: 'Correo inválido' });
+    }
+
+    const suscriptoresPath = path.join(__dirname, 'data', 'suscriptores.json');
+    let suscriptores = [];
+    if (fs.existsSync(suscriptoresPath)) {
+        suscriptores = JSON.parse(fs.readFileSync(suscriptoresPath));
+    }
+
+    if (suscriptores.includes(correo)) {
+        return res.json({ success: true, message: 'Ya estás suscrito' });
+    }
+
+    suscriptores.push(correo);
+    fs.writeFileSync(suscriptoresPath, JSON.stringify(suscriptores, null, 2));
+
+    res.json({ success: true, message: 'Gracias por suscribirte' });
 });
 
 // 🖼️ MULTER (subida de imágenes)
@@ -96,14 +122,16 @@ app.post('/api/productos', auth, upload.single('imagen'), (req, res) => {
 
     let productos = JSON.parse(fs.readFileSync(ruta));
 
-    let imagenRuta;
+    let imagenRuta = "/images/default.png"; // Imagen por defecto
 
-    if (req.fileExist) {
-        // 👉 ya existía la imagen
-        imagenRuta = "/images/uploads/" + req.file.originalname;
-    } else {
-        // 👉 nueva imagen
-        imagenRuta = "/images/uploads/" + req.file.filename;
+    if (req.file) {
+        if (req.fileExist) {
+            // 👉 ya existía la imagen
+            imagenRuta = "/images/uploads/" + req.file.originalname;
+        } else {
+            // 👉 nueva imagen
+            imagenRuta = "/images/uploads/" + req.file.filename;
+        }
     }
 
     const nuevo = {

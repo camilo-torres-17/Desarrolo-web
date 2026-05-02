@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="/css/style.css">
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,38 +12,87 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
-    <script>
+   <header>
+        <div class="cabecera">
+           <a href="/login">
+    <img class="imgcabecera" src="/images/inicio/logo.png" alt="Algoritmos Preciosos">
+</a>
+            <div class="titulo">
+                <h1>ALGORITMOS PRECIOSOS</h1>
+                <p>Diseño con Diamantes. Lógica con Lujo</p>
+                </div>
+                <div class="carrito-header">
+                  <a href="/carrito">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Carrito</span>
+                    </a>
+                    </div>
+                </div>
 
-function verDetalle(nombre, precio, descripcion, imagen, descuento){
-
-document.getElementById("detalle-producto").innerHTML = `
-<div class="modal">
-
-<div class="detalle-card">
-
-<button class="cerrar" onclick="cerrarDetalle()">X</button>
-
-<h2>${nombre}</h2>
-
-<img src="${imagen}" class="detalle-img" onclick="toggleEnlarge(this)">
-
-<p><strong>Precio:</strong> $${precio}</p>
-
-<p><strong>Descripción:</strong> ${descripcion}</p>
-
-<p><strong>Descuento:</strong> ${descuento}</p>
-
+            <div class="w-header">
+    <form class="xyz" onsubmit="return false;">
+        <input type="text" id="input-busqueda" placeholder="Buscar...">
+        <button type="button">
+            <i class="fa fa-search"></i>
+        </button>
+    </form>
 </div>
 
-</div>
-`;
+            <nav class="menu">
+                <ul>
+                    <li><a href="/">Inicio</a></li>
+                    <li><a href="/anillos">Anillos</a></li>
+                    <li><a href="/cadenas">Cadenas</a></li>
+                    <li><a href="/dijes">Dijes</a></li>
+                    <li><a href="/aretes">Aretes</a></li>
+                    <li><a href="/pulseras">Pulseras</a></li>
+                    <li><a href="/esmeraldas">Esmeraldas</a></li>
+                </ul>
+        </div>
+        </div>
+    </header>
 
-}
+<main>
+    <section>
+        <div id="resultados-busqueda" class="vista"></div>
+        <h3>Pulseras<h3>
 
-function cerrarDetalle(){
-document.getElementById("detalle-producto").innerHTML="";
-}
+        <div class="vista" id="contenedor-productos"></div>
+    </section>
+</main>
 
+<!-- MODAL -->
+<div id="detalle-producto"></div>
+
+<!-- SCRIPTS -->
+<script src="/js/product-detail.js"></script>
+<script src="/js/carrito.js"></script>
+<script src="/js/productos.js"></script>
+
+<script>
+    cargarProductos("pulseras"); // SOLO ANILLOS
 </script>
-        
+
+    <script src="/js/subscribe.js"></script>
 </body>
+
+<footer>
+        <section>
+            <div>
+                <h2>Contactanos</h2>
+                <h4>info@algoritmospreciosos.com</h4>
+                <h4>3123164110</h4>
+                <h4>Cl. 12 #8-2 a 8-84</h4>
+                <h4>Sangil, Santander, Colombia</h4>
+            </div>
+            <div>
+                <h2>Informacion</h2>
+                <h4>Preguntas frecuentes</h4>
+                <h4>Politica de envios</h4>
+                <h4>Cambios y devoluciones</h4>
+                <h4>Politica de garantia</h4>
+            </div>
+        </section>
+    </footer>
+</html>
+

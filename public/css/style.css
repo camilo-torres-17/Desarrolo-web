@@ -215,6 +215,67 @@ color:#41c5ea;
 font-size:18px;
 }
 
+/* ====== CARRITO ====== */
+.carrito-lista{
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.item-carrito{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    justify-content: space-between;
+}
+
+.item-carrito:last-child{
+    border-bottom: none;
+}
+
+.item-carrito img{
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.item-carrito > div{
+    flex: 1;
+}
+
+.item-carrito p{
+    margin: 5px 0;
+}
+
+.item-carrito button{
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.item-carrito button:hover{
+    background: #c0392b;
+}
+
+.carrito-total{
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: right;
+    font-size: 20px;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
 /* ====== FOOTER ====== */
 footer{
 background:#4dc1f2;
@@ -227,6 +288,50 @@ display:flex;
 flex-wrap:wrap;
 justify-content:space-around;
 text-align:center;
+gap: 20px;
+}
+
+footer section > div{
+flex: 1;
+min-width: 200px;
+}
+
+.subscribe-column form{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+}
+
+#subscribe-email{
+    width: 100%;
+    max-width: 220px;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    font-size: 13px;
+}
+
+#subscribe-form button{
+    background: #0078c8;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    max-width: 220px;
+}
+
+#subscribe-form button:hover{
+    background: #005fa1;
+}
+
+.subscribe-message{
+    margin-top: 8px;
+    font-size: 12px;
+    max-width: 220px;
 }
 
 /* ====== MODAL DETALLE ====== */

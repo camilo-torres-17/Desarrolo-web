@@ -1,52 +1,100 @@
+<link rel="stylesheet" href="/css/style.css">
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
-
 <body>
+   <header>
+        <div class="cabecera">
+           <a href="/login">
+    <img class="imgcabecera" src="/images/inicio/logo.png" alt="Algoritmos Preciosos">
+</a>
+            <div class="titulo">
+                <h1>ALGORITMOS PRECIOSOS</h1>
+                <p>Diseño con Diamantes. Lógica con Lujo</p>
+                </div>
+                <div class="carrito-header">
+                  <a href="/carrito">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Carrito</span>
+                    </a>
+                    </div>
+                </div>
 
-<header>
-    <div class="cabecera">
-        <img class="imgcabecera" src="/images/inicio/logo.png" alt="Algoritmos Preciosos">
-
-        <div class="titulo">
-            <h1>ALGORITMOS PRECIOSOS</h1>
-            <p>Diseño con Diamantes. Lógica con Lujo</p>
-        </div>
-    </div>
-</header>
-
-<div class="admin-container">
-
-    <button class="btn-logout" onclick="logout()">Cerrar sesión</button>
-
-    <h2 class="admin-titulo">⚙️ Panel Administrador</h2>
-
-    <!-- FORMULARIO -->
-    <div class="admin-form" id="formulario-admin">
-        <input id="nombre" placeholder="Nombre" class="input-admin">
-        <input id="precio" placeholder="Precio" class="input-admin">
-        <input type="file" id="imagen">
-        <img id="preview-img" src="/images/default.png" style="width:120px; margin-top:10px;">
-        <input id="categoria" placeholder="Categoria (anillos, cadenas...)" class="input-admin">
-        <input id="descripcion" placeholder="Descripción" class="input-admin">
-
-        <button class="btn-guardar" onclick="crearProducto()">Guardar Producto</button>
-    </div>
-
-    <!-- LISTA -->
-    <div id="lista" class="admin-lista"></div>
-
+            <div class="w-header">
+    <form class="xyz" onsubmit="return false;">
+        <input type="text" id="input-busqueda" placeholder="Buscar...">
+        <button type="button">
+            <i class="fa fa-search"></i>
+        </button>
+    </form>
 </div>
 
-<!-- SOLO ESTE SCRIPT -->
-<script src="/js/admin.js"></script>
+            <nav class="menu">
+                <ul>
+                    <li><a href="/">Inicio</a></li>
+                    <li><a href="/anillos">Anillos</a></li>
+                    <li><a href="/cadenas">Cadenas</a></li>
+                    <li><a href="/dijes">Dijes</a></li>
+                    <li><a href="/aretes">Aretes</a></li>
+                    <li><a href="/pulseras">Pulseras</a></li>
+                    <li><a href="/esmeraldas">Esmeraldas</a></li>
+                </ul>
+        </div>
+        </div>
+    </header>
 
+<main>
+    <section>
+        <h3>⚙️ Panel Administrador</h3>
+
+        <!-- FORMULARIO -->
+        <div class="admin-form" id="formulario-admin">
+            <input id="nombre" placeholder="Nombre" class="input-admin">
+            <input id="precio" placeholder="Precio" class="input-admin">
+            <input type="file" id="imagen">
+            <img id="preview-img" src="/images/default.png" style="width:120px; margin-top:10px;">
+            <input id="categoria" placeholder="Categoria (anillos, cadenas...)" class="input-admin">
+            <input id="descripcion" placeholder="Descripción" class="input-admin">
+
+            <button class="btn-guardar" onclick="crearProducto()">Guardar Producto</button>
+        </div>
+
+        <!-- LISTA -->
+        <div id="lista" class="admin-lista"></div>
+    </section>
+</main>
+
+<!-- SCRIPTS -->
+<script src="/js/admin.js"></script>
+<script src="/js/subscribe.js"></script>
 </body>
+
+<footer>
+        <section>
+            <div>
+                <h2>Contactanos</h2>
+                <h4>info@algoritmospreciosos.com</h4>
+                <h4>3123164110</h4>
+                <h4>Cl. 12 #8-2 a 8-84</h4>
+                <h4>Sangil, Santander, Colombia</h4>
+            </div>
+            <div>
+                <h2>Informacion</h2>
+                <h4>Preguntas frecuentes</h4>
+                <h4>Politica de envios</h4>
+                <h4>Cambios y devoluciones</h4>
+                <h4>Politica de garantia</h4>
+            </div>
+        </section>
+    </footer>
 </html>
+

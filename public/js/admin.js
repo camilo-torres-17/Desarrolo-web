@@ -58,7 +58,8 @@ function crearProducto(){
 
     fetch(API,{
         method:"POST",
-        body: formData
+        body: formData,
+        credentials: 'include'
     })
     .then(res => res.json())
     .then(()=>{
@@ -78,7 +79,10 @@ function crearProducto(){
 // ELIMINAR
 // =======================
 function eliminar(id){
-    fetch(API + "/" + id, { method: "DELETE" })
+    fetch(API + "/" + id, { 
+        method: "DELETE",
+        credentials: 'include'
+    })
     .then(() => cargarProductos());
 }
 
@@ -134,7 +138,8 @@ document.addEventListener("DOMContentLoaded", () => {
 function logout(){
     fetch('/api/logout', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' }
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include'
     })
     .then(res => res.json())
     .then(() => {
