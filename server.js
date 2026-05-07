@@ -3,8 +3,22 @@ const path = require('path');
 const fs = require('fs');
 const multer = require('multer');
 const session = require('express-session');
+const morgan = require('morgan');
+
+const logMiddleware = require('./src/middlewares/logMiddleware');
+const visitasMiddleware = require('./src/middlewares/visitasMiddleware');
+const validarProducto = require('./src/middlewares/validarProducto');
+const adminMiddleware = require('./src/middlewares/adminMiddleware');
+const tiempoMiddleware = require('./src/middlewares/tiempoMiddleware');
+const crearProductoMiddleware = require('./src/middlewares/crearProductoMiddleware');
+const eliminarProductoMiddleware = require('./src/middlewares/eliminarProductoMiddleware');
+
 
 const app = express();
+app.use(logMiddleware);
+app.use(visitasMiddleware);
+app.use(tiempoMiddleware);
+
 const PORT = 3000;
 
 // 📁 Ruta JSON
@@ -12,6 +26,8 @@ const ruta = path.join(__dirname, 'data', 'productos.json');
 
 // 📦 Middleware
 app.use(express.json());
+app.use(morgan('dev'));
+
 app.use(session({
     secret: 'algoritmos-preciosos-secreto',
     resave: false,
@@ -118,7 +134,8 @@ app.get('/api/productos', (req, res) => {
 });
 
 // 🔹 POST (CREAR CON IMAGEN)
-app.post('/api/productos', auth, upload.single('imagen'), (req, res) => {
+app.post('/api/productos', auth, upload.single('imagen'),
+  validarProducto, crearProductoMiddleware, (req, res) => {
 
     let productos = JSON.parse(fs.readFileSync(ruta));
 
@@ -151,7 +168,7 @@ app.post('/api/productos', auth, upload.single('imagen'), (req, res) => {
 });
 
 // 🔹 DELETE
-app.delete('/api/productos/:id', auth, (req, res) => {
+app.delete('/api/productos/:id', auth, eliminarProductoMiddleware, (req, res) => {
     let productos = JSON.parse(fs.readFileSync(ruta));
 
     productos = productos.filter(p => p.id != req.params.id);
@@ -204,11 +221,8 @@ app.get('/login', (req, res) => {
     res.sendFile(__dirname + '/public/views/login.html');
 });
 
-app.get('/admin', (req, res) => {
-    if (req.session && req.session.authenticated) {
-        return res.sendFile(__dirname + '/public/views/admin.html');
-    }
-    res.redirect('/login');
+app.get('/admin', adminMiddleware, (req, res) => {
+    res.sendFile(__dirname + '/public/views/admin.html');
 });
 
 app.get('/anillos', (req, res) => {
