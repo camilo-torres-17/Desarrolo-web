@@ -1,3 +1,4 @@
+let productoEditando = null;
 const API = "/api/productos";
 
 // =======================
@@ -25,8 +26,16 @@ function cargarProductos(){
                     </div>
 
                     <div class="admin-botones">
-                        <button class="btn-eliminar" onclick="eliminar(${p.id})">❌</button>
-                    </div>
+
+    <button class="btn-editar" onclick="editarProducto(${p.id})">
+        ✏️
+    </button>
+
+    <button class="btn-eliminar" onclick="eliminar(${p.id})">
+        ❌
+    </button>
+
+</div>
 
                 </div>
             `;
@@ -56,17 +65,29 @@ function crearProducto(){
         formData.append("imagen", imagen);
     }
 
-    fetch(API,{
-        method:"POST",
-        body: formData,
-        credentials: 'include'
-    })
+    let url = API;
+let metodo = "POST";
+
+if(productoEditando){
+
+    url = API + "/" + productoEditando;
+    metodo = "PUT";
+
+}
+
+fetch(url,{
+    method: metodo,
+    body: formData,
+    credentials: 'include'
+})
     .then(res => res.json())
     .then(()=>{
         alert("Producto creado");
         cargarProductos();
 
         limpiarFormulario();
+
+        productoEditando = null;
 
         btn.disabled = false;
     })
@@ -84,6 +105,30 @@ function eliminar(id){
         credentials: 'include'
     })
     .then(() => cargarProductos());
+}
+
+async function editarProducto(id){
+
+    const res = await fetch(API);
+
+    const productos = await res.json();
+
+    const producto = productos.find(p => p.id == id);
+
+    productoEditando = id;
+
+    document.getElementById("nombre").value = producto.nombre;
+    document.getElementById("precio").value = producto.precio;
+    document.getElementById("categoria").value = producto.categoria;
+    document.getElementById("descripcion").value = producto.descripcion;
+
+    document.getElementById("preview-img").src = producto.imagen;
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
 }
 
 // =======================

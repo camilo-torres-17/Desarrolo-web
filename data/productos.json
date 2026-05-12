@@ -9,9 +9,9 @@
   },
   {
     "id": 2,
-    "nombre": "Cadena Plana",
-    "precio": "1200000",
-    "categoria": "cadenas",
+    "nombre": "Anillo Umbral",
+    "precio": "830000",
+    "categoria": "anillos",
     "descripcion": "La elegancia no se improvisa.",
     "imagen": "/images/inicio/cadenaplana.png"
   },

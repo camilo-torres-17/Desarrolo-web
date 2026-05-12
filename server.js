@@ -4,6 +4,8 @@ const fs = require('fs');
 const multer = require('multer');
 const session = require('express-session');
 const morgan = require('morgan');
+const { sequelize } = require('./src/database/config/database');
+const Producto = require('./src/database/models/Producto');
 
 const logMiddleware = require('./src/middlewares/logMiddleware');
 const visitasMiddleware = require('./src/middlewares/visitasMiddleware');
@@ -128,85 +130,132 @@ const upload = multer({ storage: storage });
 // =========================
 
 // 🔹 GET (OBTENER)
-app.get('/api/productos', (req, res) => {
-    const data = fs.readFileSync(ruta);
-    res.json(JSON.parse(data));
+app.get('/api/productos', async (req, res) => {
+
+    try {
+        const productos = await Producto.findAll();
+        res.json(productos);
+    } catch(error){
+        res.status(500).json({
+            error: "Error obteniendo productos"
+        });
+    }
+
 });
 
 // 🔹 POST (CREAR CON IMAGEN)
-app.post('/api/productos', auth, upload.single('imagen'),
-  validarProducto, crearProductoMiddleware, (req, res) => {
+app.post('/api/productos', auth, upload.single('imagen'), async (req, res) => {
 
-    let productos = JSON.parse(fs.readFileSync(ruta));
+    try {
 
-    let imagenRuta = "/images/default.png"; // Imagen por defecto
+        let imagenRuta = "/images/default.png";
 
-    if (req.file) {
-        if (req.fileExist) {
-            // 👉 ya existía la imagen
-            imagenRuta = "/images/uploads/" + req.file.originalname;
-        } else {
-            // 👉 nueva imagen
+        if(req.file){
+
             imagenRuta = "/images/uploads/" + req.file.filename;
+
         }
+
+        const nuevoProducto = await Producto.create({
+
+            nombre: req.body.nombre,
+            precio: req.body.precio,
+            categoria: req.body.categoria,
+            descripcion: req.body.descripcion,
+            imagen: imagenRuta
+
+        });
+
+        res.json(nuevoProducto);
+
+    } catch(error){
+
+        console.log(error);
+
+        res.status(500).json({
+            error: "Error creando producto"
+        });
+
     }
 
-    const nuevo = {
-        id: Date.now(),
-        nombre: req.body.nombre,
-        precio: req.body.precio,
-        categoria: req.body.categoria,
-        descripcion: req.body.descripcion,
-        imagen: imagenRuta
-    };
-
-    productos.push(nuevo);
-
-    fs.writeFileSync(ruta, JSON.stringify(productos, null, 2));
-
-    res.json(nuevo);
 });
 
 // 🔹 DELETE
-app.delete('/api/productos/:id', auth, eliminarProductoMiddleware, (req, res) => {
-    let productos = JSON.parse(fs.readFileSync(ruta));
+app.delete('/api/productos/:id', auth, async (req, res) => {
 
-    productos = productos.filter(p => p.id != req.params.id);
+    try {
 
-    fs.writeFileSync(ruta, JSON.stringify(productos, null, 2));
+        await Producto.destroy({
 
-    res.json({ mensaje: "Eliminado" });
+            where: {
+                id: req.params.id
+            }
+
+        });
+
+        res.json({
+            mensaje: "Producto eliminado"
+        });
+
+    } catch(error){
+
+        console.log(error);
+
+        res.status(500).json({
+            error: "Error eliminando producto"
+        });
+
+    }
+
 });
 
 // 🔹 PUT (EDITAR)
-app.put('/api/productos/:id', auth, upload.single('imagen'), (req, res) => {
+app.put('/api/productos/:id', auth, upload.single('imagen'), async (req, res) => {
 
-    let productos = JSON.parse(fs.readFileSync('./data/productos.json'));
+    try {
 
-    productos = productos.map(p => {
+        const producto = await Producto.findByPk(req.params.id);
 
-        if(p.id == req.params.id){
+        if(!producto){
 
-            return {
-                ...p,
-                nombre: req.body.nombre,
-                precio: req.body.precio,
-                categoria: req.body.categoria,
-                descripcion: req.body.descripcion,
+            return res.status(404).json({
+                error: "Producto no encontrado"
+            });
 
-                // 🔥 SOLO CAMBIA IMAGEN SI SUBEN UNA NUEVA
-                imagen: req.file 
-                    ? "/images/uploads/" + req.file.filename 
-                    : p.imagen
-            };
         }
 
-        return p;
-    });
+        let imagenRuta = producto.imagen;
 
-    fs.writeFileSync('./data/productos.json', JSON.stringify(productos, null, 2));
+        if(req.file){
 
-    res.json({mensaje: "Actualizado"});
+            imagenRuta = "/images/uploads/" + req.file.filename;
+
+        }
+
+        await producto.update({
+
+            nombre: req.body.nombre,
+            precio: req.body.precio,
+            categoria: req.body.categoria,
+            descripcion: req.body.descripcion,
+            imagen: imagenRuta
+
+        });
+
+        res.json({
+            mensaje: "Producto actualizado"
+        });
+
+    } catch(error){
+
+        console.log(error);
+
+        res.status(500).json({
+            error: "Error actualizando producto"
+        });
+
+    }
+
 });
 
 // =========================
@@ -260,6 +309,19 @@ app.get('/lineahombre', (req, res) => {
 app.get('/lineamujer', (req, res) => {
     res.sendFile(__dirname + '/public/views/lineamujer.html');
 });
+
+sequelize.authenticate()
+    .then(() => {
+        console.log('Base de datos conectada');
+    })
+    .catch(err => {
+        console.log(err);
+    });
+
+sequelize.sync()
+    .then(() => {
+        console.log("Tablas sincronizadas");
+    });
 
 // 🚀 INICIAR
 app.listen(PORT, () => {
