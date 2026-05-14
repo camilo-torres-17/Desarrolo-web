@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
@@ -313,17 +314,18 @@ app.get('/lineamujer', (req, res) => {
 sequelize.authenticate()
     .then(() => {
         console.log('Base de datos conectada');
+
+
+        return sequelize.sync({ force: false });
+    })
+    .then(() => {
+        console.log("Tablas sincronizadas");
+
+        app.listen(PORT, () => {
+            console.log("Servidor en http://localhost:3000");
+        });
+
     })
     .catch(err => {
         console.log(err);
     });
-
-sequelize.sync()
-    .then(() => {
-        console.log("Tablas sincronizadas");
-    });
-
-// 🚀 INICIAR
-app.listen(PORT, () => {
-    console.log("Servidor en http://localhost:3000");
-});
