@@ -21,11 +21,11 @@ function login(){
         if(data.success){
             window.location.href = "/admin";
         } else {
-            alert("Datos incorrectos. Usuario: admin, Contraseña: 1234");
+            alert("Usuario o contraseÃ±a incorrectos");
         }
     })
     .catch(error => {
         console.error('Login error:', error);
-        alert("Error de conexión");
+        alert("Error de conexiÃ³n");
     });
 }

@@ -173,3 +173,17 @@ El usuario ingresó a la página: /
 El usuario ingresó a la página: /lineamujer
 El usuario ingresó a la página: /api/productos
 El usuario ingresó a la página: /
+El usuario ingresó a la página: /aretes
+El usuario ingresó a la página: /api/productos
+El usuario ingresó a la página: /images/uploads/candongasespiral.webp
+El usuario ingresó a la página: /login
+El usuario ingresó a la página: /api/login
+El usuario ingresó a la página: /api/login
+El usuario ingresó a la página: /admin
+El usuario ingresó a la página: /api/productos
+El usuario ingresó a la página: /images/uploads/candongasespiral.webp
+El usuario ingresó a la página: /api/productos
+El usuario ingresó a la página: /api/productos/1
+El usuario ingresó a la página: /api/productos
+El usuario ingresó a la página: /anillos
+El usuario ingresó a la página: /api/productos

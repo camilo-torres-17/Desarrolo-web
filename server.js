@@ -54,7 +54,11 @@ const auth = (req, res, next) => {
 app.post('/api/login', (req, res) => {
     const { usuario, password } = req.body;
 
-    if (usuario === 'admin' && password === '1234') {
+    if ((usuario === 'admin' && password === '1234') ||
+        (usuario === 'stefania' && password === '123s') ||
+        (usuario == "camilo" && password === "123c") ||
+        (usuario == "edinson" && password === "123e")
+ ) {
         req.session.authenticated = true;
         return res.json({ success: true });
     }
