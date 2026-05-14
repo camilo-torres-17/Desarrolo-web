@@ -1,16 +1,13 @@
-function validarProducto(req, res, next){
+function validarProducto(req, res, next) {
+  const { nombre, precio, categoria } = req.body;
 
-    const { nombre, precio, categoria } = req.body;
+  if (!nombre || !precio || !categoria) {
+    return res.status(400).json({
+      error: "Todos los campos son obligatorios",
+    });
+  }
 
-    if(!nombre || !precio || !categoria){
-
-        return res.status(400).json({
-            error: "Todos los campos son obligatorios"
-        });
-
-    }
-
-    next();
+  next();
 }
 
 module.exports = validarProducto;

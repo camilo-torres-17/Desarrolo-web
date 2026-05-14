@@ -1,16 +1,16 @@
-function adminMiddleware(req, res, next){
+function adminMiddleware(req, res, next) {
+  if (req.session && req.session.authenticated) {
+    return next();
+  }
 
-    if(req.session && req.session.authenticated){
-        return next();
-    }
+  res.redirect("/login");
 
-    res.redirect('/login');
+  fs.appendFileSync(
+    "logadmin.txt",
+    "El administrador ingresó al admin: " + req.url + "\n",
+  );
 
-    fs.appendFileSync("logadmin.txt",
-            "El administrador ingresó al admin: " + req.url + "\n"
-        );
-    
-        next();
+  next();
 }
 
 module.exports = adminMiddleware;

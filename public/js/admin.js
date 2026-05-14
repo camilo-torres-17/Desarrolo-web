@@ -4,16 +4,15 @@ const API = "/api/productos";
 // =======================
 // MOSTRAR PRODUCTOS
 // =======================
-function cargarProductos(){
-    fetch(API)
-    .then(res => res.json())
-    .then(data => {
+function cargarProductos() {
+  fetch(API)
+    .then((res) => res.json())
+    .then((data) => {
+      let contenedor = document.getElementById("lista");
+      contenedor.innerHTML = "";
 
-        let contenedor = document.getElementById("lista");
-        contenedor.innerHTML = "";
-
-        data.forEach(p => {
-            contenedor.innerHTML += `
+      data.forEach((p) => {
+        contenedor.innerHTML += `
                 <div class="admin-card">
 
                     <div class="admin-info">
@@ -39,156 +38,147 @@ function cargarProductos(){
 
                 </div>
             `;
-        });
+      });
     });
 }
 
 // =======================
 // CREAR PRODUCTO
 // =======================
-function crearProducto(){
+function crearProducto() {
+  let btn = document.querySelector(".btn-guardar");
+  btn.disabled = true;
 
-    let btn = document.querySelector(".btn-guardar");
-    btn.disabled = true;
+  let formData = new FormData();
 
-    let formData = new FormData();
+  formData.append("nombre", document.getElementById("nombre").value);
+  formData.append("precio", document.getElementById("precio").value);
+  formData.append("categoria", document.getElementById("categoria").value);
+  formData.append("descripcion", document.getElementById("descripcion").value);
 
-    formData.append("nombre", document.getElementById("nombre").value);
-    formData.append("precio", document.getElementById("precio").value);
-    formData.append("categoria", document.getElementById("categoria").value);
-    formData.append("descripcion", document.getElementById("descripcion").value);
+  let imagenInput = document.getElementById("imagen");
+  let imagen = imagenInput.files[0];
 
-    let imagenInput = document.getElementById("imagen");
-    let imagen = imagenInput.files[0];
+  if (imagen) {
+    formData.append("imagen", imagen);
+  }
 
-    if(imagen){
-        formData.append("imagen", imagen);
-    }
+  let url = API;
+  let metodo = "POST";
 
-    let url = API;
-let metodo = "POST";
-
-if(productoEditando){
-
+  if (productoEditando) {
     url = API + "/" + productoEditando;
     metodo = "PUT";
+  }
 
-}
-
-fetch(url,{
+  fetch(url, {
     method: metodo,
     body: formData,
-    credentials: 'include'
-})
-    .then(res => res.json())
-    .then(()=>{
-        alert("Producto creado");
-        cargarProductos();
+    credentials: "include",
+  })
+    .then((res) => res.json())
+    .then(() => {
+      alert("Producto creado");
+      cargarProductos();
 
-        limpiarFormulario();
+      limpiarFormulario();
 
-        productoEditando = null;
+      productoEditando = null;
 
-        btn.disabled = false;
+      btn.disabled = false;
     })
-    .catch(()=>{
-        btn.disabled = false;
+    .catch(() => {
+      btn.disabled = false;
     });
 }
 
 // =======================
 // ELIMINAR
 // =======================
-function eliminar(id){
-    fetch(API + "/" + id, { 
-        method: "DELETE",
-        credentials: 'include'
-    })
-    .then(() => cargarProductos());
+function eliminar(id) {
+  fetch(API + "/" + id, {
+    method: "DELETE",
+    credentials: "include",
+  }).then(() => cargarProductos());
 }
 
-async function editarProducto(id){
+async function editarProducto(id) {
+  const res = await fetch(API);
 
-    const res = await fetch(API);
+  const productos = await res.json();
 
-    const productos = await res.json();
+  const producto = productos.find((p) => p.id == id);
 
-    const producto = productos.find(p => p.id == id);
+  productoEditando = id;
 
-    productoEditando = id;
+  document.getElementById("nombre").value = producto.nombre;
+  document.getElementById("precio").value = producto.precio;
+  document.getElementById("categoria").value = producto.categoria;
+  document.getElementById("descripcion").value = producto.descripcion;
 
-    document.getElementById("nombre").value = producto.nombre;
-    document.getElementById("precio").value = producto.precio;
-    document.getElementById("categoria").value = producto.categoria;
-    document.getElementById("descripcion").value = producto.descripcion;
+  document.getElementById("preview-img").src = producto.imagen;
 
-    document.getElementById("preview-img").src = producto.imagen;
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
 }
 
 // =======================
 // LIMPIAR FORMULARIO
 // =======================
-function limpiarFormulario(){
-    document.getElementById("nombre").value = "";
-    document.getElementById("precio").value = "";
-    document.getElementById("categoria").value = "";
-    document.getElementById("descripcion").value = "";
+function limpiarFormulario() {
+  document.getElementById("nombre").value = "";
+  document.getElementById("precio").value = "";
+  document.getElementById("categoria").value = "";
+  document.getElementById("descripcion").value = "";
 
-    document.getElementById("imagen").value = null;
-    document.getElementById("preview-img").src = "/images/default.png";
+  document.getElementById("imagen").value = null;
+  document.getElementById("preview-img").src = "/images/default.png";
 }
 
 // =======================
 // PREVIEW IMAGEN (ARREGLADO)
 // =======================
 document.addEventListener("DOMContentLoaded", () => {
+  const inputImagen = document.getElementById("imagen");
+  const preview = document.getElementById("preview-img");
 
-    const inputImagen = document.getElementById("imagen");
-    const preview = document.getElementById("preview-img");
+  if (!inputImagen || !preview) {
+    console.log("❌ No existe input o preview");
+    return;
+  }
 
-    if(!inputImagen || !preview){
-        console.log("❌ No existe input o preview");
-        return;
+  inputImagen.addEventListener("change", function () {
+    const archivo = this.files[0];
+
+    if (!archivo) {
+      preview.src = "/images/default.png";
+      return;
     }
 
-    inputImagen.addEventListener("change", function(){
+    const reader = new FileReader();
 
-        const archivo = this.files[0];
+    reader.onload = function (e) {
+      preview.src = e.target.result;
+    };
 
-        if(!archivo){
-            preview.src = "/images/default.png";
-            return;
-        }
-
-        const reader = new FileReader();
-
-        reader.onload = function(e){
-            preview.src = e.target.result;
-        };
-
-        reader.readAsDataURL(archivo);
-    });
-
+    reader.readAsDataURL(archivo);
+  });
 });
 
 // =======================
 // LOGOUT
 // =======================
-function logout(){
-    fetch('/api/logout', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        credentials: 'include'
-    })
-    .then(res => res.json())
+function logout() {
+  fetch("/api/logout", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    credentials: "include",
+  })
+    .then((res) => res.json())
     .then(() => {
-        window.location.href = "/";
+      window.location.href = "/";
     });
 }
 

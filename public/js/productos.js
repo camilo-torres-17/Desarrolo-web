@@ -1,23 +1,21 @@
 const API = "/api/productos";
 
 // 🔹 CARGAR PRODUCTOS
-function cargarProductos(categoria){
+function cargarProductos(categoria) {
+  fetch(API)
+    .then((res) => res.json())
+    .then((productos) => {
+      let contenedor = document.getElementById("contenedor-productos");
+      if (!contenedor) return;
 
-    fetch(API)
-    .then(res => res.json())
-    .then(productos => {
+      contenedor.innerHTML = "";
 
-        let contenedor = document.getElementById("contenedor-productos");
-        if(!contenedor) return;
+      let filtrados = categoria
+        ? productos.filter((p) => p.categoria === categoria)
+        : productos;
 
-        contenedor.innerHTML = "";
-
-        let filtrados = categoria 
-            ? productos.filter(p => p.categoria === categoria)
-            : productos;
-
-        filtrados.forEach(p => {
-            contenedor.innerHTML += `
+      filtrados.forEach((p) => {
+        contenedor.innerHTML += `
                 <article class="tarjeta"
                 onclick="verDetalle(
                     '${p.nombre}',
@@ -43,47 +41,44 @@ function cargarProductos(categoria){
 
                 </article>
             `;
-        });
-
+      });
     })
-    .catch(error => console.log("Error cargando productos:", error));
+    .catch((error) => console.log("Error cargando productos:", error));
 }
 
-
 // 🔍 BUSCADOR (EN TIEMPO REAL)
-function buscarProductos(){
+function buscarProductos() {
+  let input = document.getElementById("input-busqueda");
+  let contenedor = document.getElementById("resultados-busqueda");
 
-    let input = document.getElementById("input-busqueda");
-    let contenedor = document.getElementById("resultados-busqueda");
+  if (!input || !contenedor) return;
 
-    if(!input || !contenedor) return;
+  let texto = input.value.toLowerCase();
 
-    let texto = input.value.toLowerCase();
+  // 👉 si está vacío, limpiar
+  if (texto === "") {
+    contenedor.innerHTML = "";
+    return;
+  }
 
-    // 👉 si está vacío, limpiar
-    if(texto === ""){
-        contenedor.innerHTML = "";
+  fetch(API)
+    .then((res) => res.json())
+    .then((productos) => {
+      contenedor.innerHTML = "";
+
+      let filtrados = productos.filter(
+        (p) =>
+          p.nombre.toLowerCase().includes(texto) ||
+          p.categoria.toLowerCase().includes(texto),
+      );
+
+      if (filtrados.length === 0) {
+        contenedor.innerHTML = "<p>No se encontraron productos</p>";
         return;
-    }
+      }
 
-    fetch(API)
-    .then(res => res.json())
-    .then(productos => {
-
-        contenedor.innerHTML = "";
-
-        let filtrados = productos.filter(p =>
-            p.nombre.toLowerCase().includes(texto) ||
-            p.categoria.toLowerCase().includes(texto)
-        );
-
-        if(filtrados.length === 0){
-            contenedor.innerHTML = "<p>No se encontraron productos</p>";
-            return;
-        }
-
-        filtrados.forEach(p => {
-    contenedor.innerHTML += `
+      filtrados.forEach((p) => {
+        contenedor.innerHTML += `
         <div class="item-busqueda"
         onclick="verDetalle(
             '${p.nombre}',
@@ -117,31 +112,27 @@ function buscarProductos(){
 
         </div>
     `;
-});
+      });
 
-if(texto === ""){
-    contenedor.innerHTML = "";
-    return;
-}
-
+      if (texto === "") {
+        contenedor.innerHTML = "";
+        return;
+      }
     })
-    .catch(err => console.log("Error en búsqueda:", err));
+    .catch((err) => console.log("Error en búsqueda:", err));
 }
-
 
 // 🔥 ACTIVAR BUSCADOR AUTOMÁTICO
 document.addEventListener("DOMContentLoaded", () => {
+  const input = document.getElementById("input-busqueda");
 
-    const input = document.getElementById("input-busqueda");
+  if (!input) return;
 
-    if(!input) return;
-
-    input.addEventListener("input", buscarProductos);
-
+  input.addEventListener("input", buscarProductos);
 });
 
 document.addEventListener("click", (e) => {
-    if(!e.target.closest(".w-header")){
-        document.getElementById("resultados-busqueda").innerHTML = "";
-    }
+  if (!e.target.closest(".w-header")) {
+    document.getElementById("resultados-busqueda").innerHTML = "";
+  }
 });

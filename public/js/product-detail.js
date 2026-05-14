@@ -1,6 +1,5 @@
-function verDetalle(nombre, precio, descripcion, imagen, descuento){
-
-document.getElementById("detalle-producto").innerHTML = `
+function verDetalle(nombre, precio, descripcion, imagen, descuento) {
+  document.getElementById("detalle-producto").innerHTML = `
 <div class="modal">
 <div class="detalle-card">
 <button class="cerrar" onclick="cerrarDetalle()">X</button>
@@ -11,36 +10,35 @@ document.getElementById("detalle-producto").innerHTML = `
 <p><strong>Descuento:</strong> ${descuento}</p>
 </div>
 </div>`;
-
 }
 
-function cerrarDetalle(){
-document.getElementById("detalle-producto").innerHTML="";
+function cerrarDetalle() {
+  document.getElementById("detalle-producto").innerHTML = "";
 }
 
-function agregarCarrito(nombre, precio, imagen){
-    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+function agregarCarrito(nombre, precio, imagen) {
+  let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
-    let producto = {
-        nombre: nombre,
-        precio: precio,
-        imagen: imagen
-    };
+  let producto = {
+    nombre: nombre,
+    precio: precio,
+    imagen: imagen,
+  };
 
-    carrito.push(producto);
+  carrito.push(producto);
 
-    localStorage.setItem("carrito", JSON.stringify(carrito));
+  localStorage.setItem("carrito", JSON.stringify(carrito));
 
-    alert(nombre + " agregado al carrito 🛒");
+  alert(nombre + " agregado al carrito 🛒");
 }
 
-function actualizarContador(){
-    let contador = document.getElementById("contador-carrito");
+function actualizarContador() {
+  let contador = document.getElementById("contador-carrito");
 
-    if(!contador) return; // 🔥 ESTA LÍNEA ARREGLA TODO
+  if (!contador) return; // 🔥 ESTA LÍNEA ARREGLA TODO
 
-    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-    contador.innerText = carrito.length;
+  let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+  contador.innerText = carrito.length;
 }
 
 actualizarContador();

@@ -1,20 +1,13 @@
-function tiempoMiddleware(req, res, next){
+function tiempoMiddleware(req, res, next) {
+  const inicio = Date.now();
 
-    const inicio = Date.now();
+  res.on("finish", () => {
+    const tiempo = Date.now() - inicio;
 
-    res.on("finish", () => {
+    console.log(req.method, req.url, tiempo + "ms");
+  });
 
-        const tiempo = Date.now() - inicio;
-
-        console.log(
-            req.method,
-            req.url,
-            tiempo + "ms"
-        );
-
-    });
-
-    next();
+  next();
 }
 
 module.exports = tiempoMiddleware;

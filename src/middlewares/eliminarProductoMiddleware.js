@@ -1,12 +1,12 @@
 const fs = require("fs");
 
-function eliminarProductoMiddleware(req, res, next){
+function eliminarProductoMiddleware(req, res, next) {
+  fs.appendFileSync(
+    "logeliminar.txt",
+    "Se eliminó un producto con ID: " + req.params.id + "\n",
+  );
 
-    fs.appendFileSync("logeliminar.txt",
-        "Se eliminó un producto con ID: " + req.params.id + "\n"
-    );
-
-    next();
+  next();
 }
 
 module.exports = eliminarProductoMiddleware;

@@ -1,13 +1,9 @@
 const fs = require("fs");
 
-function crearProductoMiddleware(req, res, next){
+function crearProductoMiddleware(req, res, next) {
+  fs.appendFileSync("logcrear.txt", "Se creó un producto: " + req.url + "\n");
 
-   fs.appendFileSync("logcrear.txt",
-        "Se creó un producto: " + req.url + "\n"
-    );
-
-    next();
+  next();
 }
 
 module.exports = crearProductoMiddleware;
-

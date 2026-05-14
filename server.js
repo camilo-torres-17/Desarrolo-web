@@ -57,7 +57,7 @@ app.post('/api/login', (req, res) => {
     if ((usuario === 'admin' && password === '1234') ||
         (usuario === 'stefania' && password === '123s') ||
         (usuario == "camilo" && password === "123c") ||
-        (usuario == "edinson" && password === "123e")
+        (usuario == "edinson" && password === "123")
  ) {
         req.session.authenticated = true;
         return res.json({ success: true });
