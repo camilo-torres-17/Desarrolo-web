@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Recibo de Compra</title>
+
+    <style>
+        body{
+            font-family: Arial;
+            background:#f5f5f5;
+            padding:40px;
+        }
+
+        .recibo{
+            max-width:600px;
+            margin:auto;
+            background:white;
+            padding:30px;
+            border-radius:10px;
+            box-shadow:0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h1{
+            text-align:center;
+        }
+
+        .producto{
+            display:flex;
+            justify-content:space-between;
+            margin:10px 0;
+            padding:10px 0;
+            border-bottom:1px solid #ddd;
+        }
+
+        .total{
+            margin-top:20px;
+            font-size:22px;
+            text-align:right;
+            font-weight:bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="recibo">
+
+    <h1>✅ Compra Realizada</h1>
+
+    <p>Gracias por comprar en Algoritmos Preciosos.</p>
+
+    <hr>
+
+    <div id="productos"></div>
+
+    <div id="total" class="total"></div>
+
+</div>
+
+<script>
+
+const compra = JSON.parse(localStorage.getItem("ultimaCompra")) || [];
+
+const productosDiv = document.getElementById("productos");
+
+const totalDiv = document.getElementById("total");
+
+let total = 0;
+
+compra.forEach(producto => {
+
+    total += Number(producto.precio);
+
+    productosDiv.innerHTML += `
+    
+        <div class="producto">
+            <span>${producto.nombre}</span>
+            <span>$${Number(producto.precio).toLocaleString()}</span>
+        </div>
+    
+    `;
+});
+
+totalDiv.innerHTML = `
+    Total: $${total.toLocaleString()}
+`;
+
+</script>
+
+</body>
+</html>

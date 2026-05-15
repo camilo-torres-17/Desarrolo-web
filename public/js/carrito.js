@@ -81,3 +81,26 @@ document.addEventListener("DOMContentLoaded", () => {
   mostrarCarrito();
   actualizarContador();
 });
+// FINALIZAR COMPRA
+const botonComprar = document.getElementById("comprar");
+
+if (botonComprar) {
+  botonComprar.addEventListener("click", () => {
+
+    let carrito = obtenerCarrito();
+
+    if (carrito.length === 0) {
+      alert("Tu carrito está vacío 🛒");
+      return;
+    }
+localStorage.setItem("ultimaCompra", JSON.stringify(carrito));
+
+localStorage.removeItem("carrito");
+
+    localStorage.removeItem("carrito");
+
+    mostrarCarrito();
+
+    window.location.href = "/views/gracias.html";
+  });
+}
