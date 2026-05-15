@@ -411,3 +411,8 @@
 /lineamujer ha sido visitada 2 veces el día 2026-05-14, 5:39:30 p.m. desde la IP ::1
 /api/productos ha sido visitada 108 veces el día 2026-05-14, 5:39:30 p.m. desde la IP ::1
 / ha sido visitada 12 veces el día 2026-05-14, 5:39:33 p.m. desde la IP ::1
+/ ha sido visitada 1 veces el día 2026-05-14, 9:37:32 p.m. desde la IP ::1
+/dijes ha sido visitada 1 veces el día 2026-05-14, 9:37:36 p.m. desde la IP ::1
+/api/productos ha sido visitada 1 veces el día 2026-05-14, 9:37:36 p.m. desde la IP ::1
+/cadenas ha sido visitada 1 veces el día 2026-05-14, 9:37:50 p.m. desde la IP ::1
+/api/productos ha sido visitada 2 veces el día 2026-05-14, 9:37:50 p.m. desde la IP ::1
