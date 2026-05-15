@@ -411,3 +411,44 @@
 /lineamujer ha sido visitada 2 veces el día 2026-05-14, 5:39:30 p.m. desde la IP ::1
 /api/productos ha sido visitada 108 veces el día 2026-05-14, 5:39:30 p.m. desde la IP ::1
 / ha sido visitada 12 veces el día 2026-05-14, 5:39:33 p.m. desde la IP ::1
+/ ha sido visitada 1 veces el día 14/5/2026, 6:11:57 p. m. desde la IP ::1
+/anillos ha sido visitada 1 veces el día 14/5/2026, 6:12:01 p. m. desde la IP ::1
+/api/productos ha sido visitada 1 veces el día 14/5/2026, 6:12:01 p. m. desde la IP ::1
+/cadenas ha sido visitada 1 veces el día 14/5/2026, 6:12:19 p. m. desde la IP ::1
+/api/productos ha sido visitada 2 veces el día 14/5/2026, 6:12:19 p. m. desde la IP ::1
+/login ha sido visitada 1 veces el día 14/5/2026, 6:12:31 p. m. desde la IP ::1
+/api/login ha sido visitada 1 veces el día 14/5/2026, 6:12:36 p. m. desde la IP ::1
+/admin ha sido visitada 1 veces el día 14/5/2026, 6:12:36 p. m. desde la IP ::1
+/api/productos ha sido visitada 3 veces el día 14/5/2026, 6:12:36 p. m. desde la IP ::1
+/images/uploads/Aretes%20candongasespiral.webp ha sido visitada 1 veces el día 14/5/2026, 6:12:37 p. m. desde la IP ::1
+/api/productos ha sido visitada 4 veces el día 14/5/2026, 6:12:44 p. m. desde la IP ::1
+/api/productos/4 ha sido visitada 1 veces el día 14/5/2026, 6:13:09 p. m. desde la IP ::1
+/api/productos ha sido visitada 5 veces el día 14/5/2026, 6:13:13 p. m. desde la IP ::1
+/ ha sido visitada 2 veces el día 14/5/2026, 6:13:17 p. m. desde la IP ::1
+/cadenas ha sido visitada 2 veces el día 14/5/2026, 6:13:45 p. m. desde la IP ::1
+/api/productos ha sido visitada 6 veces el día 14/5/2026, 6:13:45 p. m. desde la IP ::1
+/pulseras ha sido visitada 1 veces el día 14/5/2026, 6:13:49 p. m. desde la IP ::1
+/api/productos ha sido visitada 7 veces el día 14/5/2026, 6:13:49 p. m. desde la IP ::1
+/carrito ha sido visitada 1 veces el día 14/5/2026, 8:15:33 p. m. desde la IP ::1
+/anillos ha sido visitada 2 veces el día 14/5/2026, 8:15:36 p. m. desde la IP ::1
+/api/productos ha sido visitada 8 veces el día 14/5/2026, 8:15:36 p. m. desde la IP ::1
+/anillos ha sido visitada 3 veces el día 14/5/2026, 8:15:38 p. m. desde la IP ::1
+/api/productos ha sido visitada 9 veces el día 14/5/2026, 8:15:38 p. m. desde la IP ::1
+/carrito ha sido visitada 2 veces el día 14/5/2026, 8:15:47 p. m. desde la IP ::1
+/carrito ha sido visitada 3 veces el día 14/5/2026, 11:38:17 p. m. desde la IP ::1
+/views/gracias.html ha sido visitada 1 veces el día 14/5/2026, 11:38:25 p. m. desde la IP ::1
+/views/gracias.html ha sido visitada 2 veces el día 14/5/2026, 11:41:06 p. m. desde la IP ::1
+/ ha sido visitada 3 veces el día 14/5/2026, 11:41:22 p. m. desde la IP ::1
+/carrito ha sido visitada 4 veces el día 14/5/2026, 11:41:39 p. m. desde la IP ::1
+/views/gracias.html ha sido visitada 3 veces el día 14/5/2026, 11:41:42 p. m. desde la IP ::1
+/ ha sido visitada 4 veces el día 14/5/2026, 11:42:03 p. m. desde la IP ::1
+/carrito ha sido visitada 5 veces el día 14/5/2026, 11:42:26 p. m. desde la IP ::1
+/views/gracias.html ha sido visitada 4 veces el día 14/5/2026, 11:42:29 p. m. desde la IP ::1
+/anillos ha sido visitada 4 veces el día 14/5/2026, 11:42:49 p. m. desde la IP ::1
+/api/productos ha sido visitada 10 veces el día 14/5/2026, 11:42:49 p. m. desde la IP ::1
+/cadenas ha sido visitada 3 veces el día 14/5/2026, 11:42:58 p. m. desde la IP ::1
+/api/productos ha sido visitada 11 veces el día 14/5/2026, 11:42:59 p. m. desde la IP ::1
+/pulseras ha sido visitada 2 veces el día 14/5/2026, 11:43:04 p. m. desde la IP ::1
+/api/productos ha sido visitada 12 veces el día 14/5/2026, 11:43:04 p. m. desde la IP ::1
+/carrito ha sido visitada 6 veces el día 14/5/2026, 11:43:20 p. m. desde la IP ::1
+/views/gracias.html ha sido visitada 5 veces el día 14/5/2026, 11:43:27 p. m. desde la IP ::1
