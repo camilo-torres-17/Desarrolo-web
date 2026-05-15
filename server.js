@@ -7,6 +7,7 @@ const session = require('express-session');
 const morgan = require('morgan');
 const { sequelize } = require('./src/database/config/database');
 const Producto = require('./src/database/models/Producto');
+const Usuario = require('./src/database/models/Usuario');
 
 const logMiddleware = require('./src/middlewares/logMiddleware');
 const visitasMiddleware = require('./src/middlewares/visitasMiddleware');

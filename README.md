@@ -28,11 +28,15 @@ Este proyecto consiste en una tienda web desarrollada con tecnologías del entor
 ## Tecnologías utilizadas
 
 * Node.js
-* Express
-* Multer (gestión de subida de archivos)
+* Express.js
+* Sequelize
+* MySQL
+* Railway
 * HTML5
 * CSS3
 * JavaScript
+* Express Session
+* Multer
 
 ---
 
