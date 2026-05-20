@@ -25,10 +25,10 @@ app.use(tiempoMiddleware);
 
 const PORT = 3000;
 
-// 📁 Ruta JSON
+// Ruta JSON
 const ruta = path.join(__dirname, 'data', 'productos.json');
 
-// 📦 Middleware
+// Middleware
 app.use(express.json());
 app.use(morgan('dev'));
 
@@ -101,7 +101,7 @@ app.post('/api/subscribe', (req, res) => {
     res.json({ success: true, message: 'Gracias por suscribirte' });
 });
 
-// 🖼️ MULTER (subida de imágenes)
+// MULTER (subida de imágenes)
 const storage = multer.diskStorage({
 
     destination: function (req, file, cb) {
@@ -118,7 +118,7 @@ const storage = multer.diskStorage({
             nombre
         );
 
-        // 🔍 Si ya existe, no duplicar
+        // Si ya existe, no duplicar
         if (fs.existsSync(rutaArchivo)) {
             req.fileExist = true;
             return cb(null, nombre);
@@ -132,10 +132,10 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 // =========================
-// 📦 API PRODUCTOS
+//  API PRODUCTOS
 // =========================
 
-// 🔹 GET (OBTENER)
+// GET (OBTENER)
 app.get('/api/productos', async (req, res) => {
 
     try {
@@ -149,8 +149,8 @@ app.get('/api/productos', async (req, res) => {
 
 });
 
-// 🔹 POST (CREAR CON IMAGEN)
-app.post('/api/productos', auth, upload.single('imagen'), async (req, res) => {
+//  POST (CREAR CON IMAGEN)
+app.post('/api/productos', auth, upload.single('imagen'), validarProducto, async (req, res) => {
 
     try {
 
@@ -186,7 +186,7 @@ app.post('/api/productos', auth, upload.single('imagen'), async (req, res) => {
 
 });
 
-// 🔹 DELETE
+// DELETE
 app.delete('/api/productos/:id', auth, async (req, res) => {
 
     try {
@@ -215,8 +215,8 @@ app.delete('/api/productos/:id', auth, async (req, res) => {
 
 });
 
-// 🔹 PUT (EDITAR)
-app.put('/api/productos/:id', auth, upload.single('imagen'), async (req, res) => {
+// PUT (EDITAR)
+app.put('/api/productos/:id', auth, upload.single('imagen'), validarProducto, async (req, res) => {
 
     try {
 

@@ -1,13 +1,50 @@
-function validarProducto(req, res, next) {
-  const { nombre, precio, categoria } = req.body;
+function validarProducto(req, res, next){
 
-  if (!nombre || !precio || !categoria) {
-    return res.status(400).json({
-      error: "Todos los campos son obligatorios",
-    });
-  }
+    const {
+        nombre,
+        precio,
+        categoria,
+        descripcion
+    } = req.body;
 
-  next();
+    // VALIDAR NOMBRE
+    if(!nombre || nombre.trim() === ""){
+
+        return res.status(400).json({
+            error: "El nombre es obligatorio"
+        });
+
+    }
+
+    // VALIDAR PRECIO
+    if(!precio || isNaN(precio) || Number(precio) <= 0){
+
+        return res.status(400).json({
+            error: "Precio inválido"
+        });
+
+    }
+
+    // VALIDAR CATEGORIA
+    if(!categoria || categoria.trim() === ""){
+
+        return res.status(400).json({
+            error: "La categoría es obligatoria"
+        });
+
+    }
+
+    // VALIDAR DESCRIPCION
+    if(!descripcion || descripcion.trim().length < 10){
+
+        return res.status(400).json({
+            error: "La descripción debe tener mínimo 10 caracteres"
+        });
+
+    }
+
+    next();
+
 }
 
 module.exports = validarProducto;

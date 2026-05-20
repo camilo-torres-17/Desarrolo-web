@@ -176,10 +176,34 @@ function logout() {
     headers: { "Content-Type": "application/json" },
     credentials: "include",
   })
-    .then((res) => res.json())
-    .then(() => {
-      window.location.href = "/";
-    });
+    .then(async res => {
+
+    const data = await res.json();
+
+    if(!res.ok){
+
+        alert(data.error || "Error creando producto");
+
+        throw new Error(data.error);
+
+    }
+
+    return data;
+
+})
+.then((data)=>{
+
+    alert("Producto creado");
+
+    console.log(data);
+
+    cargarProductos();
+
+    limpiarFormulario();
+
+    btn.disabled = false;
+
+})
 }
 
 // =======================
