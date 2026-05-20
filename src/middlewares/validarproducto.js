@@ -1,5 +1,5 @@
 function validarProducto(req, res, next) {
-  const { nombre, precio, categoria, descripcion } = req.body;
+  const { nombre, precio, categoria, descripcion, stock } = req.body;
 
   // VALIDAR NOMBRE
   if (!nombre || nombre.trim() === "") {
@@ -14,6 +14,12 @@ function validarProducto(req, res, next) {
       error: "Precio inválido",
     });
   }
+
+  if(stock < 0){
+
+    errores.push('El stock no puede ser negativo');
+
+}
 
   // VALIDAR CATEGORIA
   if (!categoria || categoria.trim() === "") {

@@ -53,6 +53,7 @@ function crearProducto() {
 
   formData.append("nombre", document.getElementById("nombre").value);
   formData.append("precio", document.getElementById("precio").value);
+  formData.append("stock", document.getElementById("stock").value);
   formData.append("categoria", document.getElementById("categoria").value);
   formData.append("descripcion", document.getElementById("descripcion").value);
 
@@ -123,6 +124,7 @@ async function editarProducto(id) {
 
   document.getElementById("nombre").value = producto.nombre;
   document.getElementById("precio").value = producto.precio;
+  document.getElementById("stock").value = producto.stock;
   document.getElementById("categoria").value = producto.categoria;
   document.getElementById("descripcion").value = producto.descripcion;
 

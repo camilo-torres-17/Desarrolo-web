@@ -340,6 +340,7 @@ app.post(
       const nuevoProducto = await Producto.create({
         nombre: req.body.nombre,
         precio: req.body.precio,
+        stock: req.body.stock,
         categoria: req.body.categoria,
         descripcion: req.body.descripcion,
         imagen: imagenRuta,
