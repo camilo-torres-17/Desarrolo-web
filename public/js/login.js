@@ -1,8 +1,8 @@
 function login() {
-  const usuario = document.getElementById("usuario").value;
+  const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
 
-  if (!usuario || !password) {
+  if (!email || !password) {
     alert("Por favor completa los campos");
     return;
   }
@@ -12,7 +12,7 @@ function login() {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ usuario, password }),
+    body: JSON.stringify({ email, password }),
     credentials: "include",
   })
     .then((res) => res.json())
@@ -21,7 +21,7 @@ function login() {
       if (data.success) {
         window.location.href = "/admin";
       } else {
-        alert("Usuario o contraseña incorrectos");
+        alert("Email o contraseña incorrectos");
       }
     })
     .catch((error) => {

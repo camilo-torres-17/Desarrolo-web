@@ -54,20 +54,57 @@ const auth = (req, res, next) => {
   res.status(401).json({ error: "No autorizado" });
 };
 
-app.post("/api/login", validarLogin, (req, res) => {
-  const { usuario, password } = req.body;
+app.post("/api/login", async (req, res) => {
+  try {
+    const { email, password } = req.body;
 
-  if (
-    (usuario === "admin" && password === "1234") ||
-    (usuario === "stefania" && password === "123s") ||
-    (usuario == "camilo" && password === "123c") ||
-    (usuario == "edinson" && password === "123")
-  ) {
+    if (!email || !password) {
+      return res.status(400).json({
+        success: false,
+        error: "Todos los campos son obligatorios",
+      });
+    }
+
+    const usuario = await Usuario.findOne({
+      where: {
+        email: email,
+      },
+    });
+
+    if (!usuario) {
+      return res.status(400).json({
+        success: false,
+        error: "Correo no registrado",
+      });
+    }
+
+    if (usuario.password !== password) {
+      return res.status(400).json({
+        success: false,
+        error: "Contraseña incorrecta",
+      });
+    }
+
     req.session.authenticated = true;
-    return res.json({ success: true });
-  }
 
-  res.json({ success: false });
+    req.session.usuario = {
+      id: usuario.id,
+      nombre: usuario.nombre,
+      email: usuario.email,
+      rol: usuario.rol,
+    };
+
+    res.json({
+      success: true,
+    });
+  } catch (error) {
+    console.log(error);
+
+    res.status(500).json({
+      success: false,
+      error: "Error iniciando sesión",
+    });
+  }
 });
 
 app.post("/api/logout", (req, res) => {
@@ -226,7 +263,28 @@ const storage = multer.diskStorage({
   },
 });
 
-const upload = multer({ storage: storage });
+const upload = multer({
+  storage: storage,
+
+  limits: {
+    fileSize: 2 * 1024 * 1024, // 2MB
+  },
+
+  fileFilter: (req, file, cb) => {
+    const formatosPermitidos = [
+      "image/png",
+      "image/jpeg",
+      "image/jpg",
+      "image/webp",
+    ];
+
+    if (formatosPermitidos.includes(file.mimetype)) {
+      cb(null, true);
+    } else {
+      cb(new Error("Solo se permiten imágenes PNG, JPG, JPEG o WEBP"));
+    }
+  },
+});
 
 // =========================
 //  API PRODUCTOS
@@ -248,7 +306,16 @@ app.get("/api/productos", async (req, res) => {
 app.post(
   "/api/productos",
   auth,
-  upload.single("imagen"),
+  (req, res, next) => {
+    upload.single("imagen")(req, res, function (err) {
+      if (err) {
+        return res.status(400).json({
+          error: err.message,
+        });
+      }
+      next();
+    });
+  },
   validarProducto,
   async (req, res) => {
     try {
@@ -402,6 +469,12 @@ sequelize
   })
   .then(() => {
     console.log("Tablas sincronizadas");
+
+    app.get("/usuarios", async (req, res) => {
+      const usuarios = await Usuario.findAll();
+
+      res.json(usuarios);
+    });
 
     app.listen(PORT, () => {
       console.log("Servidor en http://localhost:3000");
