@@ -1,50 +1,35 @@
-function validarProducto(req, res, next){
+function validarProducto(req, res, next) {
+  const { nombre, precio, categoria, descripcion } = req.body;
 
-    const {
-        nombre,
-        precio,
-        categoria,
-        descripcion
-    } = req.body;
+  // VALIDAR NOMBRE
+  if (!nombre || nombre.trim() === "") {
+    return res.status(400).json({
+      error: "El nombre es obligatorio",
+    });
+  }
 
-    // VALIDAR NOMBRE
-    if(!nombre || nombre.trim() === ""){
+  // VALIDAR PRECIO
+  if (!precio || isNaN(precio) || Number(precio) <= 0) {
+    return res.status(400).json({
+      error: "Precio inválido",
+    });
+  }
 
-        return res.status(400).json({
-            error: "El nombre es obligatorio"
-        });
+  // VALIDAR CATEGORIA
+  if (!categoria || categoria.trim() === "") {
+    return res.status(400).json({
+      error: "La categoría es obligatoria",
+    });
+  }
 
-    }
+  // VALIDAR DESCRIPCION
+  if (!descripcion || descripcion.trim().length < 10) {
+    return res.status(400).json({
+      error: "La descripción debe tener mínimo 10 caracteres",
+    });
+  }
 
-    // VALIDAR PRECIO
-    if(!precio || isNaN(precio) || Number(precio) <= 0){
-
-        return res.status(400).json({
-            error: "Precio inválido"
-        });
-
-    }
-
-    // VALIDAR CATEGORIA
-    if(!categoria || categoria.trim() === ""){
-
-        return res.status(400).json({
-            error: "La categoría es obligatoria"
-        });
-
-    }
-
-    // VALIDAR DESCRIPCION
-    if(!descripcion || descripcion.trim().length < 10){
-
-        return res.status(400).json({
-            error: "La descripción debe tener mínimo 10 caracteres"
-        });
-
-    }
-
-    next();
-
+  next();
 }
 
 module.exports = validarProducto;

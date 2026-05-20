@@ -4,16 +4,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const subscribeDiv = document.createElement("div");
   subscribeDiv.className = "subscribe-column";
-  subscribeDiv.innerHTML = `
-        <h2>Suscríbete</h2>
-        <p style="font-size: 14px; margin: 0 0 12px; color: #333;">¡Unete a nuestra comunidad!</p>
-        <form id="subscribe-form">
-            <input id="subscribe-email" type="email" placeholder="Tu correo electrónico" required />
-            <button type="submit">Suscribirme</button>
-        </form>
-        <p id="subscribe-message" class="subscribe-message"></p>
-    `;
+  subscribeDiv.innerHTML =
+        `<div class="registro-box">
 
+    <h2>Crear cuenta</h2>
+
+    <input type="text" id="registro-nombre" placeholder="Nombre">
+
+    <input type="email" id="registro-email" placeholder="Correo">
+
+    <input type="password" id="registro-password" placeholder="Contraseña">
+
+    <button onclick="registrarUsuario()">
+        Registrarse
+    </button>
+
+</div>`;
   footerSection.appendChild(subscribeDiv);
 
   const form = document.getElementById("subscribe-form");
@@ -52,3 +58,57 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+function registrarUsuario(){
+
+    const nombre = document.getElementById("registro-nombre").value;
+
+    const email = document.getElementById("registro-email").value;
+
+    const password = document.getElementById("registro-password").value;
+
+    fetch('/api/register', {
+
+        method: 'POST',
+
+        headers: {
+            'Content-Type': 'application/json'
+        },
+
+        body: JSON.stringify({
+            nombre,
+            email,
+            password
+        })
+
+    })
+
+    .then(async res => {
+
+        const data = await res.json();
+
+        if(!res.ok){
+
+            alert(data.error);
+
+            return;
+        }
+
+        alert("Usuario registrado correctamente");
+
+        // LIMPIAR
+        document.getElementById("registro-nombre").value = "";
+
+        document.getElementById("registro-email").value = "";
+
+        document.getElementById("registro-password").value = "";
+
+    })
+
+    .catch(error => {
+
+        console.log(error);
+
+    });
+
+}

@@ -76,18 +76,28 @@ function crearProducto() {
     body: formData,
     credentials: "include",
   })
-    .then((res) => res.json())
-    .then(() => {
+    .then(async (res) => {
+      const data = await res.json();
+
+      if (!res.ok) {
+        alert(data.error);
+
+        btn.disabled = false;
+
+        return;
+      }
+
       alert("Producto creado");
+
       cargarProductos();
 
       limpiarFormulario();
 
-      productoEditando = null;
-
       btn.disabled = false;
     })
-    .catch(() => {
+    .catch((error) => {
+      console.log(error);
+
       btn.disabled = false;
     });
 }
@@ -176,34 +186,28 @@ function logout() {
     headers: { "Content-Type": "application/json" },
     credentials: "include",
   })
-    .then(async res => {
+    .then(async (res) => {
+      const data = await res.json();
 
-    const data = await res.json();
-
-    if(!res.ok){
-
+      if (!res.ok) {
         alert(data.error || "Error creando producto");
 
         throw new Error(data.error);
+      }
 
-    }
+      return data;
+    })
+    .then((data) => {
+      alert("Producto creado");
 
-    return data;
+      console.log(data);
 
-})
-.then((data)=>{
+      cargarProductos();
 
-    alert("Producto creado");
+      limpiarFormulario();
 
-    console.log(data);
-
-    cargarProductos();
-
-    limpiarFormulario();
-
-    btn.disabled = false;
-
-})
+      btn.disabled = false;
+    });
 }
 
 // =======================
