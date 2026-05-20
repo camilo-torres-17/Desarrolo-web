@@ -549,3 +549,16 @@
 /images/uploads/Aretes%20candongasespiral.webp ha sido visitada 1 veces el día 2026-05-20, 4:53:29 p.m. desde la IP ::1
 /login ha sido visitada 2 veces el día 2026-05-20, 4:53:34 p.m. desde la IP ::1
 /api/login ha sido visitada 2 veces el día 2026-05-20, 4:53:37 p.m. desde la IP ::1
+/ ha sido visitada 1 veces el día 2026-05-20, 5:00:23 p.m. desde la IP ::1
+/login ha sido visitada 1 veces el día 2026-05-20, 5:00:25 p.m. desde la IP ::1
+/api/login ha sido visitada 1 veces el día 2026-05-20, 5:00:27 p.m. desde la IP ::1
+/api/login ha sido visitada 2 veces el día 2026-05-20, 5:00:28 p.m. desde la IP ::1
+/admin ha sido visitada 1 veces el día 2026-05-20, 5:00:28 p.m. desde la IP ::1
+/api/productos ha sido visitada 1 veces el día 2026-05-20, 5:00:28 p.m. desde la IP ::1
+/images/uploads/Aretes%20candongasespiral.webp ha sido visitada 1 veces el día 2026-05-20, 5:00:29 p.m. desde la IP ::1
+/ ha sido visitada 2 veces el día 2026-05-20, 5:00:37 p.m. desde la IP ::1
+/anillos ha sido visitada 1 veces el día 2026-05-20, 5:00:40 p.m. desde la IP ::1
+/api/productos ha sido visitada 2 veces el día 2026-05-20, 5:00:40 p.m. desde la IP ::1
+/api/productos ha sido visitada 3 veces el día 2026-05-20, 5:01:32 p.m. desde la IP ::1
+/anillos ha sido visitada 2 veces el día 2026-05-20, 5:01:40 p.m. desde la IP ::1
+/api/productos ha sido visitada 4 veces el día 2026-05-20, 5:01:40 p.m. desde la IP ::1

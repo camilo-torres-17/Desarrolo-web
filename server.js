@@ -325,6 +325,18 @@ app.post(
         imagenRuta = "/images/uploads/" + req.file.filename;
       }
 
+      const productoExistente = await Producto.findOne({
+        where: {
+          nombre: req.body.nombre,
+        },
+      });
+
+      if (productoExistente) {
+        return res.status(400).json({
+          error: "Ese producto ya existe",
+        });
+      }
+
       const nuevoProducto = await Producto.create({
         nombre: req.body.nombre,
         precio: req.body.precio,
